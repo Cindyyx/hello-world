@@ -219,15 +219,22 @@ footer{padding-block:28px 48px;display:flex;flex-wrap:wrap;justify-content:space
 
 @media (max-width:900px){
   .links{display:none}
-  .stage{height:auto;flex-direction:column;align-items:center;gap:16px}
-  .bubble{position:static;animation:none}
-  .bubbles{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+  .stage{height:auto;display:block;padding:132px 0 118px}
+  .phone{margin-inline:auto}
+  .bubbles{display:contents}
+  .bubble{padding:10px 14px;border-radius:18px}
+  .bubble .v{font-size:17px}
+  .bubble .k{font-size:10px}
+  .b1{left:0;top:0}
+  .b3{right:0;left:auto;top:56px}
+  .b2{left:0;top:auto;bottom:24px}
+  .b4{right:0;left:auto;top:auto;bottom:62px}
   .story{grid-template-columns:1fr}
   .story:nth-child(even) .visual{order:0}
   .list{grid-template-columns:repeat(2,minmax(0,1fr))}
   .faq{grid-template-columns:1fr}
 }
-@media (min-width:901px){.bubbles{display:contents}}
+
 @media (max-width:640px){
   body{font-size:17px}
   .wrap{padding-inline:18px}
@@ -329,6 +336,36 @@ details[open] summary::after{background:linear-gradient(145deg,#FFE6F2,#FFC2DF);
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
 }
+
+/* Phones of every size: nothing may push the page sideways */
+html,body{overflow-x:clip;max-width:100%}
+.story>*,.visual,.conv,.card{min-width:0}
+.amount-in{min-width:0}
+.amount-in input{min-width:0;width:100%}
+.chips{flex-wrap:wrap}
+@media (max-width:380px){.navpill{font-size:15px}.navpill .btn{padding-inline:14px;font-size:14px}.navpill *{white-space:nowrap}.wrap{padding-inline:14px}.bubble{padding:8px 11px}.bubble .v{font-size:15px}.phone{width:100%}}
+
+/* Language switch */
+.nav-r{display:flex;align-items:center;gap:8px}
+.lang{display:inline-flex;padding:3px;border-radius:999px;background:var(--soft);gap:2px}
+.lang button{font:600 12px/1 var(--body);letter-spacing:.05em;min-width:36px;height:30px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.lang button:focus-visible{outline:2px solid var(--pink-ink);outline-offset:2px}
+@media (max-width:420px){.navpill{padding:6px 6px 6px 10px;gap:6px}.brand{font-size:15px;gap:6px}.brand svg{width:26px;height:26px}.nav-r{gap:5px}.lang button{min-width:30px;padding:0 6px}.navpill .btn{padding:9px 12px;font-size:13px}}
+@media (max-width:374px){.brand .bt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+
+/* Flat, round buttons: solid colour, no glossy 3D shading */
+.btn.dark,.hero .btn.dark{background:#BE3D78;color:#fff;box-shadow:none}
+.btn:hover{box-shadow:none;transform:translateY(-1px)}
+.btn .arrow{background:#FFD9EC;box-shadow:none}
+.paid{background:#BE3D78;color:#fff;box-shadow:none}
+.chip{box-shadow:none;border:1px solid rgba(25,20,32,.12)}
+.chip[aria-pressed="true"]{background:#BE3D78;color:#fff;border-color:transparent}
+.tick[aria-pressed="true"]{background:#D6F3E6;color:#1F7A52}
+.sync{background:#D6F3E6;box-shadow:none}
+.lang button[aria-pressed="true"]{box-shadow:none}
+:root[data-theme="dark"] .chip{border-color:rgba(255,255,255,.14)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip{border-color:rgba(255,255,255,.14)}}
 </style>
 </head>
 <body>
@@ -340,10 +377,11 @@ details[open] summary::after{background:linear-gradient(145deg,#FFE6F2,#FFC2DF);
     <div class="navpill">
       <a class="brand" href="#top">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg>
-        Trip Expenses
+        <span class="bt">Trip Expenses</span>
       </a>
       <div class="links"><a href="#features">Features</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
-      <a class="btn dark" href="https://trip-expenses-nu.vercel.app" target="_blank" rel="noopener">Open the app</a>
+      <div class="nav-r"><div class="lang" role="group" aria-label="Language / Langue"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button></div>
+      <a class="btn dark" href="https://trip-expenses-nu.vercel.app" target="_blank" rel="noopener">Open the app</a></div>
     </div>
   </div>
 </nav>
@@ -585,6 +623,29 @@ $('scanbtn').addEventListener('click',()=>{const r=$('rcpt'),F=$('filled');F.inn
 const counters=document.querySelectorAll('.stat-row .n');
 const fmtC=el=>v=>(el.dataset.pre||'')+Math.round(v)+(el.dataset.suf||'');
 if('IntersectionObserver' in window&&!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.dataset.v=0;tween(el,+el.dataset.to,fmtC(el),1400);io.unobserve(el)}}),{threshold:.6});counters.forEach(c=>io.observe(c));}
+
+// language switch (EN / FR)
+(function(){const FR={"Features": "Fonctions", "How it works": "Comment ça marche", "FAQ": "FAQ", "Open the app": "Ouvrir l'appli", "Shared costs for group trips": "Dépenses partagées en voyage de groupe", "Split": "Partagez", "trips": "vos voyages", "in": "dans", "any": "toutes les", "currency": "devises", "Log what everyone paid, in yen, euros or dollars. Each expense converts at that day's rate, and settle-up finds the fewest payments to make everyone even.": "Notez ce que chacun a payé, en yens, en euros ou en dollars. Chaque dépense est convertie au taux du jour, et le règlement trouve le moins de paiements possible pour que tout le monde soit quitte.", "Start a free trip": "Créer un voyage gratuit", "Rate used": "Taux utilisé", "Apr 12": "12 avr.", "Who's coming": "Qui vient", "Settle up": "Régler", "2 payments": "2 paiements", "not 6": "au lieu de 6", "Receipt read": "Reçu lu", "on device": "sur l'appareil", "Tokyo, April": "Tokyo, avril", "● Synced": "● Synchronisé", "4 people · trip currency CAD": "4 personnes · devise du voyage CAD", "Anna paid · split 4 ways": "Payé par Anna · partagé en 4", "Shinkansen to Kyoto": "Shinkansen vers Kyoto", "Cindy paid · split 4 ways": "Payé par Cindy · partagé en 4", "Minh paid · by amount": "Payé par Minh · par montant", "Settle up · 2 payments": "Règlement · 2 paiements", "Mark paid": "Marquer payé", "Paid ✓ · Undo": "Payé ✓  ·  Annuler", "a month, for everyone": "par mois, pour tout le monde", "currencies supported": "devises prises en charge", "ways to split a bill": "façons de partager une facture", "usable offline": "utilisable hors ligne", "Any currency": "Toutes les devises", "Pay in yen, see it in": "Payez en yens, voyez-le en", "dollars": "dollars", "Each expense converts into the trip currency at the rate for the day it was spent. When your card statement arrives, swap in the real amount.": "Chaque dépense est convertie dans la devise du voyage au taux du jour où elle a été faite. Quand votre relevé de carte arrive, remplacez-la par le montant réel.", "Try it": "Essayez", "What you paid": "Ce que vous avez payé", "In the trip currency (CAD)": "Dans la devise du voyage (CAD)", "Example rates. The app uses the real rate for the day you spent it.": "Taux d'exemple. L'appli utilise le vrai taux du jour de la dépense.", "The fewest payments,": "Le moins de paiements,", "worked out for you": "calculé pour vous", "Trip Expenses looks at what everyone paid and owes, then lists the smallest number of transfers to make it even. Mark each one paid, with undo.": "Trip Expenses regarde ce que chacun a payé et doit, puis liste le plus petit nombre de virements pour que tout soit égal. Marquez chacun comme payé, avec possibilité d'annuler.", "paid": "a payé", "Add": "Ajouter", "Start over": "Recommencer", "Everyone is even.": "Tout le monde est quitte.", "Scan receipts": "Numérisez vos reçus", "Snap the receipt,": "Photographiez le reçu,", "skip the typing": "oubliez la saisie", "Amount, currency, date, shop and address fill in from a photo. It's read on your phone, so the picture is never uploaded.": "Le montant, la devise, la date, le commerce et l'adresse se remplissent à partir d'une photo. La lecture se fait sur votre téléphone, donc l'image n'est jamais envoyée.", "Total": "Total", "Date": "Date", "Scan this receipt": "Numériser ce reçu", "And the rest": "Et le reste", "Small things that make a trip": "Les petits détails qui rendent un voyage", "easier": "plus simple", "Exact splits": "Partages exacts", "Equal, by amount or by percent. Shares always add up to the total, to the cent.": "Égal, par montant ou en pourcentage. Les parts donnent toujours le total, au cent près.", "offline": "hors ligne", "Works without signal": "Fonctionne sans réseau", "Add expenses on a plane or a mountain. Everything syncs when you're back online.": "Ajoutez des dépenses en avion ou en montagne. Tout se synchronise à votre retour en ligne.", "link": "lien", "Invite with a link": "Invitez avec un lien", "Each person gets their own link, with Admin, Editor or Viewer access.": "Chaque personne reçoit son propre lien, avec un accès Admin, Éditeur ou Lecteur.", "Export anywhere": "Exportez partout", "Excel, CSV, or a live formula that keeps a Google Sheet up to date.": "Excel, CSV ou une formule en direct qui garde un Google Sheet à jour.", "search": "recherche", "Find any expense": "Trouvez n'importe quelle dépense", "Search by description, who paid, category or amount, and filter by person or status.": "Cherchez par description, payeur, catégorie ou montant, et filtrez par personne ou par statut.", "install": "installer", "Feels like an app": "Comme une vraie appli", "Add it to your home screen on iPhone, Android or desktop. Light and dark mode included.": "Ajoutez-la à votre écran d'accueil sur iPhone, Android ou ordinateur. Modes clair et sombre inclus.", "From first coffee to": "Du premier café", "final transfer": "au dernier virement", "Create a trip": "Créez un voyage", "Sign in with Google, name the trip and pick the trip currency.": "Connectez-vous avec Google, nommez le voyage et choisissez sa devise.", "Invite your group": "Invitez votre groupe", "Send each person their own link and choose their access.": "Envoyez à chacun son propre lien et choisissez son accès.", "Add, then settle": "Ajoutez, puis réglez", "Log costs as you go. At the end, follow the settle-up list.": "Notez les dépenses au fur et à mesure. À la fin, suivez la liste de règlement.", "Questions people ask": "Questions fréquentes", "A personal project for friends and family.": "Un projet personnel pour les amis et la famille.", "It runs on free hosting with no uptime guarantee, so please don't use it for business or sensitive financial records.": "Il fonctionne sur un hébergement gratuit sans garantie de disponibilité; ne l'utilisez donc pas pour des affaires ou des données financières sensibles.", "Is it really free?": "Est-ce vraiment gratuit?", "Yes. There are no ads, no subscription and no card on file. It runs on free plans that pause rather than charge.": "Oui. Aucune pub, aucun abonnement et aucune carte enregistrée. Il fonctionne sur des forfaits gratuits qui se mettent en pause plutôt que de facturer.", "Do my friends need to install anything?": "Mes amis doivent-ils installer quelque chose?", "No. They open their invite link in a browser and sign in with Google. They can add it to their home screen if they want it to feel like an app.": "Non. Ils ouvrent leur lien d'invitation dans un navigateur et se connectent avec Google. Ils peuvent l'ajouter à leur écran d'accueil pour l'utiliser comme une appli.", "What if we have no internet?": "Et si on n'a pas Internet?", "Keep adding expenses. They're stored on your phone and sync when you're back online. A small pill always shows whether your changes reached the cloud.": "Continuez d'ajouter des dépenses. Elles sont gardées sur votre téléphone et se synchronisent à votre retour en ligne. Une petite pastille indique toujours si vos changements ont atteint le nuage.", "Where do exchange rates come from?": "D'où viennent les taux de change?", "A free daily rates service. Each expense uses the rate for the day it was spent, and you can override it with the amount on your card statement.": "D'un service gratuit de taux quotidiens. Chaque dépense utilise le taux du jour où elle a été faite, et vous pouvez le remplacer par le montant de votre relevé de carte.", "Planning a trip with": "Vous planifiez un voyage entre", "friends?": "amis?", "Start a trip in under a minute and send everyone their link.": "Créez un voyage en moins d'une minute et envoyez à chacun son lien.", "Open Trip Expenses": "Ouvrir Trip Expenses", "Trip Expenses · a personal project": "Trip Expenses · un projet personnel", "$0 a month · works offline · screen-reader friendly": "0 $ par mois · fonctionne hors ligne · compatible avec les lecteurs d'écran", "Lisbon": "Lisbonne", "Edinburgh": "Édimbourg", "Séoul": "Séoul", "Seoul": "Séoul", "@Example trip in the app": "Exemple de voyage dans l'appli", "@Amount paid": "Montant payé", "@Currency": "Devise", "@Who paid": "Qui a payé", "@Amount in dollars": "Montant en dollars", "@Split between": "Partagé entre", "@Menu": "Menu"};
+const RX=[[/^(\d+) expenses so far$/,'$1 dépenses jusqu\'ici'],[/^Mark (.+) to (.+) paid$/,'Marquer $1 → $2 comme payé'],[/^Category: (.*)$/,'Catégorie : $1'],[/^Shop: (.*)$/,'Commerce : $1'],[/^Amount: (.*)$/,'Montant : $1'],[/^Date: (.*)$/,'Date : $1']];
+let lang='en';const orig=new WeakMap(),seen=new Set(),attrs=['aria-label'];
+function tr(t){const k=t.replace(/\s+/g,' ').trim();if(!k)return null;const m=t.match(/^(\s*)[\s\S]*?(\s*)$/),w=v=>m[1]+v+m[2];if(FR[k]!==undefined)return w(FR[k]);for(const[r,v]of RX)if(r.test(k))return w(k.replace(r,v));return null}
+function trA(v){if(FR['@'+v]!==undefined)return FR['@'+v];for(const[r,x]of RX)if(r.test(v))return v.replace(r,x);return null}
+function apply(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('script,style,svg,.lang,input')?2:1});let n;const list=[];
+ if(root.nodeType===3)list.push(root);else while(n=w.nextNode())list.push(n);
+ for(const n of list){if(lang==='fr'){if(!orig.has(n)||(n.nodeValue!==orig.get(n).fr)){const en=n.nodeValue,f=tr(en);if(f!==null){orig.set(n,{en,fr:f});seen.add(n);n.nodeValue=f}}}else if(orig.has(n)&&n.nodeValue===orig.get(n).fr){n.nodeValue=orig.get(n).en}}
+ const els=root.nodeType===1?[root,...root.querySelectorAll('[aria-label]')]:[];
+ for(const e of els){if(!e.hasAttribute||!e.hasAttribute('aria-label')||e.closest('.lang'))continue;const v=e.getAttribute('aria-label');
+  if(lang==='fr'){const o=e.__en;if(o&&v===o.fr)continue;const f=trA(v);if(f!==null){e.__en={en:v,fr:f};e.setAttribute('aria-label',f)}}else if(e.__en&&v===e.__en.fr)e.setAttribute('aria-label',e.__en.en)}}
+let busy=false;
+const mo=new MutationObserver(ms=>{if(busy||lang!=='fr')return;busy=true;for(const m of ms){if(m.type==='characterData')apply(m.target);else m.addedNodes.forEach(x=>(x.nodeType===1||x.nodeType===3)&&apply(x))}busy=false});
+mo.observe(document.body,{childList:true,subtree:true,characterData:true});
+function setLang(l){lang=l;busy=true;
+ if(l==='en'){seen.forEach(n=>{const o=orig.get(n);if(o&&n.nodeValue===o.fr)n.nodeValue=o.en});document.querySelectorAll('[aria-label]').forEach(e=>{if(e.__en&&e.getAttribute('aria-label')===e.__en.fr)e.setAttribute('aria-label',e.__en.en)})}else apply(document.body);
+ busy=false;document.documentElement.lang=l;document.title=l==='fr'?'Trip Expenses · Dépenses de voyage partagées':'Trip Expenses';
+ document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));try{localStorage.setItem('lang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let l=new URLSearchParams(location.search).get('lang');if(!l){try{l=localStorage.getItem('lang')}catch(e){}}if(!l&&/^fr/i.test(navigator.language||''))l='fr';if(l==='fr')setLang('fr');
+})();
 </script>
 
 </body>
