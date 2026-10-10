@@ -218,6 +218,12 @@ h1,h2,h3,p{margin:0}
 .lang button{font:600 12px/1 Inter,system-ui,sans-serif;letter-spacing:.06em;min-width:40px;height:32px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .lang button:focus-visible{outline:2px solid var(--pink-ink);outline-offset:2px}
+/* Fit longer French text, keep the y's tail visible */
+.name{padding-bottom:.2em;margin-bottom:-.2em}
+.name span{transform:translateY(135%)}
+.cap{flex-wrap:wrap}
+.cap>span{flex:1 1 170px;min-width:0}
+.cap b,.cap span,.svc-head h3,.small,h2{overflow-wrap:break-word;hyphens:auto}
 /* Rounded everything */
 .page{border-radius:clamp(18px,3vw,36px)}
 .portrait{border-radius:clamp(18px,3vw,32px);margin-inline:clamp(10px,2vw,22px)}
@@ -249,7 +255,7 @@ h1,h2,h3,p{margin:0}
   .wins li{grid-template-columns:1fr;gap:4px}
   .slide{flex-basis:86%}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.name span{transform:none}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.name span{transform:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
