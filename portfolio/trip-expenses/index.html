@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Trip Expenses: a travel app for splitting costs in any currency.">
+<title>Trip Expenses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&family=DM+Serif+Display:ital@1&display=swap">
+<style>
+/* Layout: one continuous, airy scroll. No boxed panels: sections flow into each other over drifting colour blobs.
+   Hero (big headline + floating phone) → currency marquee → three alternating feature stories → light feature list
+   → how-it-works line that fills as you scroll → FAQ → soft gradient CTA. Colours follow the app. */
+:root{
+  --bg:#FFF5F9; --surface:#FFFFFF; --soft:#FFEAF2; --ink:#3A2233; --muted:#7D5F72; --line:#F7DCE8;
+  --pink:#FFE1EE; --pink-2:#FFC8DD; --pink-ink:#D04F8A; --mint:#E3F6EE; --mint-ink:#2F8662; --amber:#FFEFE0; --lilac:#EEE4FF;
+  --glass:rgba(255,255,255,.74); --shadow:rgba(208,79,138,.22);
+  --surf-grad:linear-gradient(160deg,#FFFFFF 0%,#FFF8FB 55%,#FFEEF5 100%);
+  --hi:rgba(255,255,255,.9);
+  --depth:0 1px 0 var(--hi) inset, 0 2px 4px -2px rgba(208,79,138,.10), 0 18px 40px -18px rgba(208,79,138,.30);
+  --depth-lg:0 1px 0 var(--hi) inset, 0 4px 10px -4px rgba(208,79,138,.12), 0 50px 90px -30px rgba(208,79,138,.42);
+  --btn-grad:linear-gradient(180deg,#F07AAE 0%,#D04F8A 100%);
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --script:"DM Serif Display", Georgia, serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1C1218; --surface:#271A22; --soft:#33212C; --ink:#FBEFF5; --muted:#C2A6B6; --line:#41293A;
+  --pink:#4E2639; --pink-2:#663049; --pink-ink:#FFA6CD; --mint:#183A2C; --mint-ink:#7FDDB0; --amber:#3D3020; --lilac:#2E2547;
+  --glass:rgba(30,25,37,.78); --shadow:rgba(0,0,0,.5);
+  --surf-grad:linear-gradient(160deg,#272030 0%,#1E1925 60%,#1A1520 100%); --hi:rgba(255,255,255,.07);
+  --depth:0 1px 0 var(--hi) inset, 0 2px 4px -2px rgba(0,0,0,.4), 0 18px 40px -18px rgba(0,0,0,.6);
+  --depth-lg:0 1px 0 var(--hi) inset, 0 4px 10px -4px rgba(0,0,0,.4), 0 50px 90px -30px rgba(0,0,0,.7);
+  --btn-grad:linear-gradient(180deg,#F590BD 0%,#D9649A 100%); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1C1218; --surface:#271A22; --soft:#33212C; --ink:#FBEFF5; --muted:#C2A6B6; --line:#41293A;
+  --pink:#4E2639; --pink-2:#663049; --pink-ink:#FFA6CD; --mint:#183A2C; --mint-ink:#7FDDB0; --amber:#3D3020; --lilac:#2E2547;
+  --glass:rgba(30,25,37,.78); --shadow:rgba(0,0,0,.5);
+  --surf-grad:linear-gradient(160deg,#272030 0%,#1E1925 60%,#1A1520 100%); --hi:rgba(255,255,255,.07);
+  --depth:0 1px 0 var(--hi) inset, 0 2px 4px -2px rgba(0,0,0,.4), 0 18px 40px -18px rgba(0,0,0,.6);
+  --depth-lg:0 1px 0 var(--hi) inset, 0 4px 10px -4px rgba(0,0,0,.4), 0 50px 90px -30px rgba(0,0,0,.7);
+  --btn-grad:linear-gradient(180deg,#F590BD 0%,#D9649A 100%); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:24px}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h2{font-weight:700;font-size:clamp(34px,5vw,60px);line-height:1.02;letter-spacing:-.035em}
+p{margin:0}
+.muted{color:var(--muted)}
+.eyebrow{font:500 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--pink-ink)}
+.btn{display:inline-flex;align-items:center;gap:12px;font:600 16px var(--body);text-decoration:none;border-radius:999px;padding:15px 26px;transition:transform .3s var(--ease), box-shadow .3s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--shadow)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--pink-ink);outline-offset:3px}
+.btn.dark{background:var(--ink);color:#fff}
+.btn .arrow{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--pink);color:#191420;font-size:14px;margin-right:-12px;transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:rotate(45deg)}
+
+/* drifting background blobs */
+.blobs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.blobs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75;animation:drift 22s ease-in-out infinite alternate}
+.blobs i:nth-child(1){width:520px;height:520px;background:var(--pink);top:-140px;right:-120px}
+.blobs i:nth-child(2){width:440px;height:440px;background:var(--mint);bottom:-160px;left:-140px;animation-duration:28s}
+.blobs i:nth-child(3){width:360px;height:360px;background:var(--lilac);top:40%;left:45%;animation-duration:34s;opacity:.55}
+@keyframes drift{to{transform:translate(-60px,50px) scale(1.12)}}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;padding-block:14px}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.navpill{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:999px;padding:8px 8px 8px 16px;box-shadow:0 10px 30px -18px var(--shadow)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:18px;text-decoration:none}
+.brand svg{width:32px;height:32px}
+.links{display:flex;gap:2px}
+.links a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;color:var(--muted);transition:color .2s, background .2s}
+.links a:hover{color:var(--ink);background:var(--soft)}
+nav .btn{padding:10px 18px;font-size:15px}
+
+/* hero */
+.hero{padding-block:clamp(56px,10vw,120px) 40px;text-align:center}
+.hero h1{font-weight:800;font-size:clamp(48px,9.5vw,128px);line-height:.92;letter-spacing:-.05em;max-width:11ch;margin:22px auto 28px}
+.hero h1 .w{display:inline-block;animation:rise .9s var(--ease) both}
+.hero h1 .w:nth-child(2){animation-delay:.08s}.hero h1 .w:nth-child(3){animation-delay:.16s}
+.hero h1 .w:nth-child(4){animation-delay:.24s}.hero h1 .w:nth-child(5){animation-delay:.32s}
+.hero h1 .accent{color:var(--pink-ink);font-style:italic;font-weight:700}
+.hero .lede{max-width:32em;margin:0 auto 36px;font-size:19px;color:var(--muted);animation:rise .9s .35s var(--ease) both}
+.hero .btn{animation:rise .9s .45s var(--ease) both}
+@keyframes rise{from{transform:translateY(24px)}to{transform:none}}
+
+.stage{position:relative;margin-top:clamp(56px,8vw,96px);height:560px;display:flex;justify-content:center}
+.phone{position:relative;z-index:2;width:330px;max-width:100%;align-self:flex-start;background:var(--surface);border-radius:44px;padding:20px 18px 22px;box-shadow:0 40px 80px -30px var(--shadow);animation:float 7s ease-in-out infinite;text-align:left}
+@keyframes float{50%{transform:translateY(-14px)}}
+.ph-top{display:flex;justify-content:space-between;align-items:center}
+.ph-title{font-family:var(--display);font-weight:700;font-size:20px}
+.sync{font:500 11px var(--mono);background:var(--mint);color:var(--mint-ink);border-radius:999px;padding:4px 9px}
+.ph-sub{font-size:13px;color:var(--muted);margin-bottom:10px}
+.exp{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);line-height:1.3}
+.exp .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:16px;background:var(--amber)}
+.exp b{display:block;font-weight:600;font-size:14.5px}
+.exp small{color:var(--muted);font-size:12px}
+.amt{text-align:right;font-variant-numeric:tabular-nums}
+.amt b{font-size:14.5px}
+.amt small{font-family:var(--mono);font-size:11px}
+.settle{margin-top:12px;background:var(--pink);border-radius:22px;padding:14px 16px;line-height:1.35}
+.settle .lbl{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pink-ink)}
+.settle .row{display:flex;justify-content:space-between;gap:8px;margin-top:6px;font-weight:600;font-variant-numeric:tabular-nums}
+.paid{margin-top:10px;width:100%;border:0;border-radius:999px;padding:10px;background:var(--ink);color:var(--bg);font:600 14px var(--body);cursor:pointer;transition:transform .2s}
+.paid:active{transform:scale(.97)}
+.bubble{position:absolute;z-index:3;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:22px;padding:14px 18px;text-align:left;line-height:1.3;box-shadow:0 20px 40px -24px var(--shadow);animation:float 8s ease-in-out infinite}
+.bubble .k{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bubble .v{font-family:var(--display);font-weight:700;font-size:21px;margin-top:3px}
+.bubble .v small{font:500 12px var(--mono);color:var(--muted)}
+.b1{left:4%;top:60px;animation-delay:-2s}
+.b2{left:10%;top:300px;animation-delay:-5s}
+.b3{right:4%;top:110px;animation-delay:-1s}
+.b4{right:9%;top:350px;animation-delay:-4s}
+.avatars{display:flex;margin-top:6px}
+.avatars span{width:32px;height:32px;border-radius:50%;border:2px solid var(--surface);display:grid;place-items:center;font:700 13px var(--display);margin-left:-8px;color:#191420}
+.avatars span:first-child{margin-left:0}
+
+/* marquee */
+.marquee{overflow:hidden;padding-block:28px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:56px;width:max-content;animation:slide 40s linear infinite;font-family:var(--display);font-weight:700;font-size:clamp(26px,3.4vw,40px);color:var(--muted);white-space:nowrap}
+.track span b{color:var(--pink-ink);font-weight:800}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* stories */
+.stories{display:flex;flex-direction:column;gap:clamp(96px,14vw,180px);padding-block:clamp(80px,12vw,160px)}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:center}
+.story > *{min-width:0}
+.story:nth-child(even) .visual{order:-1}
+.story .copy{display:flex;flex-direction:column;gap:20px;max-width:30em}
+.story .copy p{color:var(--muted)}
+.visual{position:relative;min-height:340px;display:grid;place-items:center}
+.visual::before{content:"";position:absolute;inset:6% 4%;border-radius:46% 54% 60% 40% / 50% 42% 58% 50%;background:var(--pink);animation:morph 14s ease-in-out infinite alternate;z-index:-1}
+.story:nth-child(2) .visual::before{background:var(--mint)}
+.story:nth-child(3) .visual::before{background:var(--amber)}
+@keyframes morph{50%{border-radius:58% 42% 40% 60% / 44% 60% 40% 56%;transform:rotate(6deg)}}
+
+.fx{display:flex;flex-direction:column;gap:12px;width:min(340px,100%)}
+.fx div{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--surface);border-radius:999px;padding:12px 20px;font:500 14.5px var(--mono);font-variant-numeric:tabular-nums;box-shadow:0 14px 30px -20px var(--shadow)}
+.fx div:nth-child(2){margin-left:28px}.fx div:nth-child(3){margin-left:56px}
+.fx b{color:var(--pink-ink);font-family:var(--display);font-size:17px}
+
+.flow{position:relative;width:min(360px,100%);display:flex;flex-direction:column;gap:14px}
+.pay{display:flex;align-items:center;gap:12px;background:var(--surface);border-radius:24px;padding:14px 18px;box-shadow:0 14px 30px -20px var(--shadow);line-height:1.3}
+.pay .who{flex:1;font-weight:600}
+.pay .who small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.pay .sum{font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums}
+.pay .tick{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--mint-ink);font-weight:700;font-size:14px}
+
+.rcpt{width:min(280px,100%);background:var(--surface);border-radius:20px 20px 6px 6px;padding:22px 22px 18px;font:500 13px var(--mono);line-height:1.8;box-shadow:0 30px 50px -28px var(--shadow);transform:rotate(-3deg);position:relative;overflow:hidden}
+.rcpt .shop{font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:8px}
+.rcpt .ln{display:flex;justify-content:space-between;gap:10px}
+.rcpt .tot{border-top:1px dashed var(--line);margin-top:8px;padding-top:8px;font-weight:700}
+.rcpt .hl{background:var(--pink);border-radius:6px;padding:0 6px;margin:0 -6px}
+.rcpt .scan{position:absolute;left:0;right:0;height:3px;background:var(--pink-ink);box-shadow:0 0 18px 4px var(--pink-ink);opacity:.6;animation:scan 3.2s ease-in-out infinite}
+@keyframes scan{0%{top:6%}50%{top:92%}100%{top:6%}}
+
+/* more features: open list, no boxes */
+.more{padding-block:clamp(40px,8vw,100px)}
+.more h2{max-width:14ch;margin:18px 0 clamp(40px,6vw,72px)}
+.list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 48px}
+.item{display:flex;flex-direction:column;gap:10px;border-top:1.5px solid var(--line);padding-top:22px}
+.item h3{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.item p{color:var(--muted);font-size:16.5px}
+.item .sym{font:500 13px var(--mono);color:var(--pink-ink)}
+
+/* how it works: line fills on scroll */
+.how{padding-block:clamp(80px,12vw,160px)}
+.how h2{text-align:center;max-width:16ch;margin:18px auto clamp(56px,8vw,96px)}
+.how .eyebrow{display:block;text-align:center}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.timeline::before,.timeline::after{content:"";position:absolute;top:27px;left:16.66%;right:16.66%;height:2px;background:var(--line)}
+.timeline::after{background:var(--pink-ink);transform-origin:left;transform:scaleX(1)}
+.step{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;padding-inline:8px}
+.step .num{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font:700 20px var(--display);box-shadow:0 0 0 8px var(--bg)}
+.step h3{font-size:24px;font-weight:700}
+.step p{color:var(--muted);max-width:18em}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,7vw,100px);padding-block:clamp(60px,10vw,120px)}
+.faq > *{min-width:0}
+.faq .side{display:flex;flex-direction:column;gap:18px}
+.faq .note{font-size:15.5px;color:var(--muted);border-left:3px solid var(--pink-2);padding-left:16px;margin-top:8px}
+.faq .note b{color:var(--ink)}
+details{border-bottom:1.5px solid var(--line);padding-block:24px}
+details:first-child{border-top:1.5px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--display);font-weight:700;font-size:21px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--soft);font:500 20px var(--body);transition:transform .35s var(--ease), background .35s}
+details[open] summary::after{transform:rotate(45deg);background:var(--pink)}
+details p{margin-top:12px;color:var(--muted);max-width:38em}
+details[open] p{animation:open .45s var(--ease)}
+@keyframes open{from{transform:translateY(-6px)}}
+
+/* cta */
+.cta{position:relative;text-align:center;padding-block:clamp(100px,14vw,180px);overflow:hidden}
+.cta::before{content:"";position:absolute;left:50%;top:50%;width:min(900px,140vw);aspect-ratio:1.8;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--pink-2),var(--pink) 45%,transparent 72%);z-index:-1;animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.08)}}
+.cta h2{font-size:clamp(40px,7vw,88px);max-width:12ch;margin:0 auto 22px}
+.cta p{color:var(--muted);margin-bottom:36px}
+footer{padding-block:28px 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px}
+
+/* scroll reveals (progressive: only where scroll-driven animations exist; otherwise everything is simply visible) */
+@supports (animation-timeline: view()){
+  .reveal{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes reveal{from{opacity:.15;transform:translateY(60px) scale(.98)}to{opacity:1;transform:none}}
+  .item:nth-child(3n+2){animation-range:entry 6% cover 32%}
+  .item:nth-child(3n){animation-range:entry 12% cover 36%}
+  .timeline::after{animation:fill linear both;animation-timeline:view();animation-range:entry 40% cover 55%}
+  @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .fx div{animation:slidein linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+  @keyframes slidein{from{transform:translateX(50px);opacity:.2}}
+}
+
+@media (max-width:900px){
+  .links{display:none}
+  .stage{height:auto;flex-direction:column;align-items:center;gap:16px}
+  .bubble{position:static;animation:none}
+  .bubbles{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+  .story{grid-template-columns:1fr}
+  .story:nth-child(even) .visual{order:0}
+  .list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .faq{grid-template-columns:1fr}
+}
+@media (min-width:901px){.bubbles{display:contents}}
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{padding-inline:18px}
+  .list{grid-template-columns:1fr;gap:36px}
+  .timeline{grid-template-columns:1fr;gap:48px}
+  .timeline::before,.timeline::after{display:none}
+  .fx div:nth-child(n){margin-left:0}
+  .visual{min-height:280px}
+}
+/* ---------- shading & depth ---------- */
+.btn.dark{background:var(--btn-grad);box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 10px 24px -10px var(--shadow)}
+.btn .arrow{background:linear-gradient(145deg,#FFE6F2,#FFC2DF);box-shadow:0 1px 0 #fff inset}
+.navpill{box-shadow:var(--depth)}
+.phone{background:var(--surf-grad);box-shadow:var(--depth-lg),0 0 0 10px rgba(255,255,255,.35);transform-style:preserve-3d;will-change:transform}
+.phone::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 32%);mix-blend-mode:soft-light}
+.exp .ic{background:linear-gradient(145deg,#FFF4E2,#FFDDA8);box-shadow:0 1px 0 #fff inset,0 4px 10px -4px rgba(150,90,20,.35)}
+.settle{background:linear-gradient(145deg,#FFE6F2 0%,#FFC9E3 100%);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 12px 26px -14px rgba(176,48,110,.45);color:#191420}
+.paid{background:linear-gradient(180deg,#F07AAE,#D04F8A);color:#fff}
+.sync{background:linear-gradient(145deg,#E6FAF0,#C6EDDA);box-shadow:0 1px 0 #fff inset;color:#1F7A52}
+.bubble{background:linear-gradient(160deg,rgba(255,255,255,.85),rgba(255,255,255,.55));box-shadow:var(--depth);border:1px solid rgba(255,255,255,.6)}
+:root[data-theme="dark"] .bubble{background:linear-gradient(160deg,rgba(45,37,56,.85),rgba(30,25,37,.6));border-color:rgba(255,255,255,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bubble{background:linear-gradient(160deg,rgba(45,37,56,.85),rgba(30,25,37,.6));border-color:rgba(255,255,255,.08)}}
+.visual::before{background:radial-gradient(120% 90% at 30% 20%,var(--pink-2),var(--pink) 60%);box-shadow:0 40px 80px -40px rgba(176,48,110,.35)}
+.story:nth-child(2) .visual::before{background:radial-gradient(120% 90% at 30% 20%,#E9FBF2,var(--mint) 60%)}
+.story:nth-child(3) .visual::before{background:radial-gradient(120% 90% at 30% 20%,#FFF5E3,var(--amber) 60%)}
+.card{background:var(--surf-grad);border-radius:28px;box-shadow:var(--depth-lg);padding:22px}
+.step .num{background:var(--btn-grad);box-shadow:0 0 0 8px var(--bg),0 14px 26px -10px var(--shadow)}
+summary::after{background:var(--surf-grad);box-shadow:var(--depth)}
+details[open] summary::after{background:linear-gradient(145deg,#FFE6F2,#FFC2DF);color:#191420}
+
+
+/* ---------- soft, girly touches ---------- */
+.hero h1 .accent,.story h2 em,.cta h2 em,.more h2 em,.how h2 em{font-family:var(--script);font-style:italic;font-weight:400;letter-spacing:-.02em;color:var(--pink-ink)}
+.story h2 em,.cta h2 em,.more h2 em,.how h2 em{font-size:1.05em}
+.blobs i:nth-child(1){background:var(--pink-2)}
+.blobs i:nth-child(2){background:var(--lilac)}
+.blobs i:nth-child(3){background:var(--pink)}
+.sparkle{position:absolute;color:var(--pink-ink);opacity:.55;font-size:22px;pointer-events:none;animation:twinkle 3.6s ease-in-out infinite}
+@keyframes twinkle{50%{transform:scale(.6) rotate(25deg);opacity:.2}}
+.hero{position:relative}
+.cta .btn.dark,.hero .btn.dark{box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 16px 34px -12px rgba(208,79,138,.55)}
+.marquee .track span b{font-family:var(--script);font-style:italic;font-weight:400}
+.eyebrow::before{content:"♡ "}
+.cta::before{background:radial-gradient(closest-side,var(--pink-2),var(--pink) 45%,transparent 72%)}
+
+/* ---------- interactive pieces ---------- */
+.try{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mint-ink);background:var(--mint);border-radius:999px;padding:4px 10px;align-self:flex-start}
+.conv{width:min(380px,100%);display:flex;flex-direction:column;gap:16px}
+.conv label{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.amount-in{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:18px;padding:6px 8px 6px 16px;box-shadow:inset 0 2px 6px rgba(80,30,90,.10)}
+.amount-in span{font:700 22px var(--display);color:var(--pink-ink);min-width:1.4em}
+.amount-in input{flex:1;min-width:0;border:0;background:transparent;font:700 26px var(--display);color:var(--ink);padding:8px 0;font-variant-numeric:tabular-nums}
+.amount-in input:focus{outline:none}
+.amount-in:focus-within{box-shadow:inset 0 2px 6px rgba(80,30,90,.10),0 0 0 3px var(--pink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:0;cursor:pointer;font:600 14px var(--body);padding:9px 14px;border-radius:999px;background:var(--bg);color:var(--ink);box-shadow:var(--depth);transition:transform .2s var(--ease),background .2s}
+.chip:hover{transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:var(--btn-grad);color:#fff}
+.result{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px dashed var(--line);padding-top:14px}
+.result b{font:800 clamp(32px,4vw,42px) var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.result small{color:var(--muted);font-size:13px}
+
+.split{width:min(400px,100%);display:flex;flex-direction:column;gap:14px}
+.ppl{display:flex;flex-wrap:wrap;gap:8px}
+.person{display:flex;align-items:center;gap:8px;border:0;cursor:pointer;padding:6px 12px 6px 6px;border-radius:999px;background:var(--bg);color:var(--ink);font:600 14px var(--body);box-shadow:var(--depth);transition:transform .2s var(--ease)}
+.person i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--display);font-style:normal;color:#191420}
+.person[aria-pressed="true"]{outline:2px solid var(--pink-ink);outline-offset:1px}
+.person:hover{transform:translateY(-2px)}
+.row2{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row2 select,.row2 input{font:600 15px var(--body);color:var(--ink);background:var(--bg);border:0;border-radius:14px;padding:10px 12px;box-shadow:inset 0 2px 6px rgba(80,30,90,.10);min-width:0}
+.row2 input{width:110px;font-variant-numeric:tabular-nums}
+.addbtn{border:0;cursor:pointer;border-radius:14px;padding:10px 16px;font:600 15px var(--body);background:var(--btn-grad);color:#fff}
+.ledger{display:flex;flex-direction:column;gap:8px;max-height:200px;overflow:auto}
+.pay{transition:transform .4s var(--ease),opacity .4s}
+.pay.enter{animation:pop .5s var(--ease)}
+@keyframes pop{from{transform:scale(.92);opacity:.3}}
+.pay{background:var(--surf-grad);box-shadow:var(--depth)}
+.pay .tick{cursor:pointer;border:0;font:700 14px var(--body);background:var(--soft);color:var(--muted)}
+.pay .tick[aria-pressed="true"]{background:linear-gradient(145deg,#E6FAF0,#C6EDDA);color:#1F7A52}
+.pay.done .sum{text-decoration:line-through;opacity:.5}
+.even{font-size:14px;color:var(--muted);text-align:center}
+
+.rcpt{background:var(--surf-grad);box-shadow:var(--depth-lg)}
+.rcpt .f{transition:background .4s, color .4s}
+.rcpt .f.hl{background:var(--pink);color:#191420}
+.scanbtn{margin-top:18px}
+.filled{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center;min-height:36px}
+.filled span{font:500 12.5px var(--mono);border-radius:999px;padding:6px 12px;background:var(--surface);box-shadow:var(--depth);animation:pop .45s var(--ease) both}
+.rcpt .scan{display:none}
+.rcpt.scanning .scan{display:block}
+.vstack{display:flex;flex-direction:column;align-items:center}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-block:24px 8px;text-align:center}
+.stat-row .n{font:800 clamp(38px,5vw,60px) var(--display);letter-spacing:-.04em;line-height:1;background:linear-gradient(180deg,var(--ink),var(--pink-ink));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat-row p{color:var(--muted);font-size:15px;margin-top:8px}
+@media (max-width:640px){.stat-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<nav>
+  <div class="wrap">
+    <div class="navpill">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg>
+        Trip Expenses
+      </a>
+      <div class="links"><a href="#features">Features</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
+      <a class="btn dark" href="https://trip-expenses-nu.vercel.app" target="_blank" rel="noopener">Open the app</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <span class="sparkle" aria-hidden="true" style="left:12%;top:120px">✦</span><span class="sparkle" aria-hidden="true" style="right:14%;top:200px;animation-delay:-1.2s;font-size:16px">✦</span><span class="sparkle" aria-hidden="true" style="left:22%;top:420px;animation-delay:-2.4s;font-size:14px">♡</span>
+  <div class="wrap">
+    <span class="eyebrow">Shared costs for group trips</span>
+    <h1><span class="w">Split</span> <span class="w">trips</span> <span class="w">in</span> <span class="w accent">any</span> <span class="w accent">currency</span></h1>
+    <p class="lede">Log what everyone paid, in yen, euros or dollars. Each expense converts at that day's rate, and settle-up finds the fewest payments to make everyone even.</p>
+    <a class="btn dark" href="https://trip-expenses-nu.vercel.app" target="_blank" rel="noopener">Start a free trip <span class="arrow" aria-hidden="true">↗</span></a>
+
+    <div class="stage">
+      <div class="bubbles">
+        <div class="bubble b1"><div class="k">Rate used</div><div class="v">¥1 = $0.0090 <small>Apr 12</small></div></div>
+        <div class="bubble b2"><div class="k">Who's coming</div><div class="avatars"><span style="background:#FFD9EC">A</span><span style="background:#D6F3E6">C</span><span style="background:#FFE9C7">M</span><span style="background:#E4D9FF">L</span></div></div>
+        <div class="bubble b3"><div class="k">Settle up</div><div class="v">2 payments <small>not 6</small></div></div>
+        <div class="bubble b4"><div class="k">Receipt read</div><div class="v">¥6,800 <small>on device</small></div></div>
+      </div>
+      <div class="phone" aria-label="Example trip in the app">
+        <div class="ph-top"><span class="ph-title">Tokyo, April</span><span class="sync">● Synced</span></div>
+        <div class="ph-sub">4 people · trip currency CAD</div>
+        <div class="exp"><span class="ic" aria-hidden="true">🍜</span><span><b>Ichiran Shibuya</b><small>Anna paid · split 4 ways</small></span><span class="amt"><b>$61.20</b><small>¥6,800</small></span></div>
+        <div class="exp"><span class="ic" aria-hidden="true">🚄</span><span><b>Shinkansen to Kyoto</b><small>Cindy paid · split 4 ways</small></span><span class="amt"><b>$522.00</b><small>¥58,000</small></span></div>
+        <div class="exp"><span class="ic" aria-hidden="true">🏨</span><span><b>Kyoto ryokan</b><small>Minh paid · by amount</small></span><span class="amt"><b>$810.00</b><small>¥90,000</small></span></div>
+        <div class="settle">
+          <div class="lbl">Settle up · 2 payments</div>
+          <div class="row"><span>Leo → Minh</span><span id="pay-amt">$348.30</span></div>
+          <button class="paid" id="mark-paid" type="button">Mark paid</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span><b>¥</b> Tokyo</span><span><b>€</b> Lisbon</span><span><b>₫</b> Hội An</span><span><b>฿</b> Chiang Mai</span><span><b>$</b> Montréal</span><span><b>£</b> Edinburgh</span><span><b>₩</b> Seoul</span><span><b>MX$</b> Oaxaca</span>
+    <span><b>¥</b> Tokyo</span><span><b>€</b> Lisbon</span><span><b>₫</b> Hội An</span><span><b>฿</b> Chiang Mai</span><span><b>$</b> Montréal</span><span><b>£</b> Edinburgh</span><span><b>₩</b> Seoul</span><span><b>MX$</b> Oaxaca</span>
+  </div>
+</div>
+
+<div class="wrap stat-row">
+  <div><div class="n" data-to="0" data-pre="$">$0</div><p>a month, for everyone</p></div>
+  <div><div class="n" data-to="160" data-suf="+">160+</div><p>currencies supported</p></div>
+  <div><div class="n" data-to="3">3</div><p>ways to split a bill</p></div>
+  <div><div class="n" data-to="100" data-suf="%">100%</div><p>usable offline</p></div>
+</div>
+
+<main id="features">
+  <div class="wrap stories">
+    <section class="story">
+      <div class="copy reveal">
+        <span class="eyebrow">Any currency</span>
+        <h2>Pay in yen, see it in <em>dollars</em></h2>
+        <p>Each expense converts into the trip currency at the rate for the day it was spent. When your card statement arrives, swap in the real amount.</p>
+      </div>
+      <div class="visual reveal">
+        <div class="card conv">
+          <span class="try">Try it</span>
+          <label for="amt">What you paid</label>
+          <div class="amount-in"><span id="sym">¥</span><input id="amt" type="text" inputmode="decimal" value="6800" aria-label="Amount paid"></div>
+          <div class="chips" id="curs" role="group" aria-label="Currency">
+            <button class="chip" type="button" data-c="JPY" aria-pressed="true">¥ JPY</button>
+            <button class="chip" type="button" data-c="EUR" aria-pressed="false">€ EUR</button>
+            <button class="chip" type="button" data-c="VND" aria-pressed="false">₫ VND</button>
+            <button class="chip" type="button" data-c="THB" aria-pressed="false">฿ THB</button>
+            <button class="chip" type="button" data-c="GBP" aria-pressed="false">£ GBP</button>
+          </div>
+          <div class="result"><small>In the trip currency (CAD)</small><b id="out">$61.20</b></div>
+          <small class="muted" style="font-size:12px">Example rates. The app uses the real rate for the day you spent it.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="copy reveal">
+        <span class="eyebrow">Settle up</span>
+        <h2>The fewest payments, <em>worked out for you</em></h2>
+        <p>Trip Expenses looks at what everyone paid and owes, then lists the smallest number of transfers to make it even. Mark each one paid, with undo.</p>
+      </div>
+      <div class="visual reveal">
+        <div class="card split">
+          <span class="try">Try it</span>
+          <div class="row2">
+            <select id="payer" aria-label="Who paid"><option>Anna</option><option>Cindy</option><option>Minh</option><option>Leo</option></select>
+            <span class="muted" style="font-size:15px">paid</span>
+            <input id="cost" type="text" inputmode="decimal" value="120" aria-label="Amount in dollars">
+            <button class="addbtn" id="add" type="button">Add</button>
+          </div>
+          <div class="ppl" id="ppl" role="group" aria-label="Split between">
+            <button class="person" type="button" aria-pressed="true" data-p="Anna"><i style="background:#FFD9EC">A</i>Anna</button>
+            <button class="person" type="button" aria-pressed="true" data-p="Cindy"><i style="background:#D6F3E6">C</i>Cindy</button>
+            <button class="person" type="button" aria-pressed="true" data-p="Minh"><i style="background:#FFE9C7">M</i>Minh</button>
+            <button class="person" type="button" aria-pressed="true" data-p="Leo"><i style="background:#E4D9FF">L</i>Leo</button>
+          </div>
+          <div class="ledger" id="ledger" aria-live="polite"></div>
+          <button class="chip" id="reset" type="button" style="align-self:center">Start over</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="copy reveal">
+        <span class="eyebrow">Scan receipts</span>
+        <h2>Snap the receipt, <em>skip the typing</em></h2>
+        <p>Amount, currency, date, shop and address fill in from a photo. It's read on your phone, so the picture is never uploaded.</p>
+      </div>
+      <div class="visual reveal">
+        <div class="vstack">
+          <div class="rcpt" id="rcpt" aria-hidden="true">
+            <span class="scan"></span>
+            <div class="shop"><span class="f" data-k="Shop">Ichiran Shibuya</span></div>
+            <div class="ln"><span>Ramen ×4</span><span>¥5,920</span></div>
+            <div class="ln"><span>Kaedama ×2</span><span>¥880</span></div>
+            <div class="ln tot"><span>Total</span><span class="f" data-k="Amount">¥6,800</span></div>
+            <div class="ln"><span>Date</span><span class="f" data-k="Date">2026-04-12</span></div>
+          </div>
+          <button class="btn dark scanbtn" id="scanbtn" type="button">Scan this receipt <span class="arrow" aria-hidden="true">↗</span></button>
+          <div class="filled" id="filled" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="more">
+    <div class="wrap">
+      <span class="eyebrow">And the rest</span>
+      <h2>Small things that make a trip <em>easier</em></h2>
+      <div class="list">
+        <div class="item reveal"><span class="sym">= ÷ %</span><h3>Exact splits</h3><p>Equal, by amount or by percent. Shares always add up to the total, to the cent.</p></div>
+        <div class="item reveal"><span class="sym">offline</span><h3>Works without signal</h3><p>Add expenses on a plane or a mountain. Everything syncs when you're back online.</p></div>
+        <div class="item reveal"><span class="sym">link</span><h3>Invite with a link</h3><p>Each person gets their own link, with Admin, Editor or Viewer access.</p></div>
+        <div class="item reveal"><span class="sym">.xlsx .csv</span><h3>Export anywhere</h3><p>Excel, CSV, or a live formula that keeps a Google Sheet up to date.</p></div>
+        <div class="item reveal"><span class="sym">search</span><h3>Find any expense</h3><p>Search by description, who paid, category or amount, and filter by person or status.</p></div>
+        <div class="item reveal"><span class="sym">install</span><h3>Feels like an app</h3><p>Add it to your home screen on iPhone, Android or desktop. Light and dark mode included.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>From first coffee to <em>final transfer</em></h2>
+    <div class="timeline">
+      <div class="step reveal"><span class="num">1</span><h3>Create a trip</h3><p>Sign in with Google, name the trip and pick the trip currency.</p></div>
+      <div class="step reveal"><span class="num">2</span><h3>Invite your group</h3><p>Send each person their own link and choose their access.</p></div>
+      <div class="step reveal"><span class="num">3</span><h3>Add, then settle</h3><p>Log costs as you go. At the end, follow the settle-up list.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap faq" id="faq">
+  <div class="side reveal">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions people ask</h2>
+    <p class="note"><b>A personal project for friends and family.</b> It runs on free hosting with no uptime guarantee, so please don't use it for business or sensitive financial records.</p>
+  </div>
+  <div class="reveal">
+    <details open><summary>Is it really free?</summary><p>Yes. There are no ads, no subscription and no card on file. It runs on free plans that pause rather than charge.</p></details>
+    <details><summary>Do my friends need to install anything?</summary><p>No. They open their invite link in a browser and sign in with Google. They can add it to their home screen if they want it to feel like an app.</p></details>
+    <details><summary>What if we have no internet?</summary><p>Keep adding expenses. They're stored on your phone and sync when you're back online. A small pill always shows whether your changes reached the cloud.</p></details>
+    <details><summary>Where do exchange rates come from?</summary><p>A free daily rates service. Each expense uses the rate for the day it was spent, and you can override it with the amount on your card statement.</p></details>
+  </div>
+</section>
+
+<section class="cta">
+  <span class="sparkle" aria-hidden="true" style="left:18%;top:30%">✦</span><span class="sparkle" aria-hidden="true" style="right:20%;bottom:28%;animation-delay:-1.8s">♡</span>
+  <div class="wrap reveal">
+    <h2>Planning a trip with <em>friends?</em></h2>
+    <p>Start a trip in under a minute and send everyone their link.</p>
+    <a class="btn dark" href="https://trip-expenses-nu.vercel.app" target="_blank" rel="noopener">Open Trip Expenses <span class="arrow" aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Trip Expenses · a personal project</span>
+  <span>$0 a month · works offline · screen-reader friendly</span>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const money=n=>'$'+n.toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+/* phone mark paid */
+const b=$('mark-paid'),a=$('pay-amt');
+b.addEventListener('click',()=>{const done=b.dataset.done==='1';b.dataset.done=done?'0':'1';b.textContent=done?'Mark paid':'Paid ✓  ·  Undo';a.style.textDecoration=done?'none':'line-through';});
+
+/* phone tilt */
+const phone=document.querySelector('.phone'),stage=document.querySelector('.stage');
+if(!reduce&&matchMedia('(pointer:fine)').matches){
+  stage.addEventListener('pointermove',e=>{const r=phone.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    phone.style.animation='none';phone.style.transform=`perspective(900px) rotateY(${x*14}deg) rotateX(${-y*10}deg) translateY(-6px)`;});
+  stage.addEventListener('pointerleave',()=>{phone.style.transform='';phone.style.animation='';});
+}
+
+/* animated number */
+function tween(el,to,fmt,ms=600){const from=parseFloat(el.dataset.v||0);el.dataset.v=to;if(reduce){el.textContent=fmt(to);return}
+  const t0=performance.now();const step=t=>{const p=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-p,3);el.textContent=fmt(from+(to-from)*e);if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);}
+
+/* converter (example rates to CAD) */
+const R={JPY:[.0090,'¥'],EUR:[1.485,'€'],VND:[.0000534,'₫'],THB:[.0405,'฿'],GBP:[1.78,'£']};
+let cur='JPY';const out=$('out');out.dataset.v=61.2;
+const conv=()=>{const v=parseFloat($('amt').value.replace(/[^0-9.]/g,''))||0;tween(out,v*R[cur][0],money)};
+$('amt').addEventListener('input',conv);
+$('curs').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;cur=c.dataset.c;
+  document.querySelectorAll('#curs .chip').forEach(x=>x.setAttribute('aria-pressed',x===c));$('sym').textContent=R[cur][1];
+  $('amt').value={JPY:6800,EUR:42.5,VND:350000,THB:620,GBP:18}[cur];conv();});
+
+/* split + settle-up playground */
+const people=['Anna','Cindy','Minh','Leo'];const seed=()=>[{by:'Anna',amt:61.2,among:[...people]},{by:'Cindy',amt:522,among:[...people]},{by:'Minh',amt:810,among:[...people]}];
+let exps=seed();const paid=new Set();
+function settle(){const bal=Object.fromEntries(people.map(p=>[p,0]));
+  exps.forEach(x=>{bal[x.by]+=x.amt;const s=x.amt/x.among.length;x.among.forEach(p=>bal[p]-=s)});
+  const cr=people.filter(p=>bal[p]>.005).map(p=>[p,bal[p]]).sort((a,b)=>b[1]-a[1]);
+  const db=people.filter(p=>bal[p]<-.005).map(p=>[p,-bal[p]]).sort((a,b)=>b[1]-a[1]);
+  const t=[];let i=0,j=0;while(i<db.length&&j<cr.length){const m=Math.min(db[i][1],cr[j][1]);t.push([db[i][0],cr[j][0],m]);db[i][1]-=m;cr[j][1]-=m;if(db[i][1]<.005)i++;if(cr[j][1]<.005)j++;}
+  return t;}
+function render(fresh){const t=settle(),L=$('ledger');L.innerHTML='';
+  if(!t.length){L.innerHTML='<p class="even">Everyone is even.</p>';return}
+  t.forEach(([f,to,m])=>{const key=f+to+m.toFixed(2),d=document.createElement('div');d.className='pay'+(fresh?' enter':'')+(paid.has(key)?' done':'');
+    d.innerHTML=`<span class="who">${f} → ${to}<small>${exps.length} expenses so far</small></span><span class="sum">${money(m)}</span><button class="tick" type="button" aria-label="Mark ${f} to ${to} paid" aria-pressed="${paid.has(key)}">✓</button>`;
+    d.querySelector('.tick').onclick=ev=>{paid.has(key)?paid.delete(key):paid.add(key);render(false)};L.appendChild(d);});}
+$('ppl').addEventListener('click',e=>{const p=e.target.closest('.person');if(!p)return;const on=p.getAttribute('aria-pressed')==='true';
+  if(on&&document.querySelectorAll('#ppl [aria-pressed="true"]').length===1)return;p.setAttribute('aria-pressed',!on);});
+$('add').addEventListener('click',()=>{const v=parseFloat($('cost').value.replace(/[^0-9.]/g,''));if(!v)return;
+  const among=[...document.querySelectorAll('#ppl [aria-pressed="true"]')].map(x=>x.dataset.p);exps.push({by:$('payer').value,amt:v,among});paid.clear();render(true);});
+$('reset').addEventListener('click',()=>{exps=seed();paid.clear();render(true)});
+render(false);
+
+/* receipt scan */
+$('scanbtn').addEventListener('click',()=>{const r=$('rcpt'),F=$('filled');F.innerHTML='';r.querySelectorAll('.f').forEach(x=>x.classList.remove('hl'));r.classList.add('scanning');
+  const fs=[...r.querySelectorAll('.f')];fs.forEach((f,i)=>setTimeout(()=>{f.classList.add('hl');const s=document.createElement('span');s.textContent=f.dataset.k+': '+f.textContent;F.appendChild(s);
+    if(i===fs.length-1)setTimeout(()=>{r.classList.remove('scanning');const c=document.createElement('span');c.textContent='Category: Restaurants';F.appendChild(c)},450)},reduce?0:700*(i+1)));});
+
+/* stat counters */
+const counters=document.querySelectorAll('.stat-row .n');
+const fmtC=el=>v=>(el.dataset.pre||'')+Math.round(v)+(el.dataset.suf||'');
+if('IntersectionObserver' in window&&!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.dataset.v=0;tween(el,+el.dataset.to,fmtC(el),1400);io.unobserve(el)}}),{threshold:.6});counters.forEach(c=>io.observe(c));}
+</script>
+
+</body>
+</html>
