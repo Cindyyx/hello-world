@@ -212,6 +212,12 @@ h1,h2,h3,p{margin:0}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
+/* Language switch */
+.top-r{display:flex;align-items:center;gap:16px}
+.lang{display:inline-flex;padding:3px;border:1.5px solid var(--ink);border-radius:999px;gap:2px}
+.lang button{font:600 12px/1 Inter,system-ui,sans-serif;letter-spacing:.06em;min-width:40px;height:32px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.lang button:focus-visible{outline:2px solid var(--pink-ink);outline-offset:2px}
 /* Rounded everything */
 .page{border-radius:clamp(18px,3vw,36px)}
 .portrait{border-radius:clamp(18px,3vw,32px);margin-inline:clamp(10px,2vw,22px)}
@@ -260,7 +266,10 @@ h1,h2,h3,p{margin:0}
   <header class="in-pad" id="top">
     <div class="top">
       <button class="menu-btn" type="button" id="menu-open" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span></button>
-      <span class="small">©2026</span>
+      <div class="top-r">
+        <div class="lang" role="group" aria-label="Language / Langue"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button></div>
+        <span class="small">©2026</span>
+      </div>
     </div>
     <div class="labels">
       <span class="small">Strategy &amp;<br>Delivery</span>
@@ -370,6 +379,7 @@ Trip Expenses ↗</b><span>Travel app for splitting costs in any currency</span>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lang='en';
 // menu
 const menu=$('#menu'),openB=$('#menu-open');
 function setMenu(on){if(on){menu.hidden=false;requestAnimationFrame(()=>{menu.classList.add('open');$('#menu-close').focus()})}else{menu.classList.remove('open');setTimeout(()=>{menu.hidden=true},reduce?0:500);openB.focus()}openB.setAttribute('aria-expanded',on)}
@@ -377,7 +387,7 @@ openB.addEventListener('click',()=>setMenu(true));$('#menu-close').addEventListe
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden)setMenu(false)});
 $$('#menu a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menu.hidden=true;openB.setAttribute('aria-expanded',false)}));
 // reveal + count up
-const fmt=(n,el)=>(el.dataset.prefix||'')+Math.round(n).toLocaleString('en-US')+(el.dataset.suffix||'');
+const fmt=(n,el)=>(el.dataset.prefix||'')+Math.round(n).toLocaleString(lang==='fr'?'fr-CA':'en-US')+(el.dataset.suffix||'');
 function count(el){const to=+el.dataset.count;if(reduce){el.textContent=fmt(to,el);return}const t0=performance.now(),d=1400;(function f(t){const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,el);if(p<1)requestAnimationFrame(f)})(t0)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(count);io.unobserve(e.target)}}),{threshold:.15});
 $$('.rv').forEach(el=>io.observe(el));
@@ -390,6 +400,20 @@ $('#prev').addEventListener('click',()=>{go(active()-1);stop()});$('#next').addE
 let timer=null;function stop(){clearInterval(timer);timer=null}
 if(!reduce){timer=setInterval(()=>go(active()+1),3800);['pointerenter','focusin','touchstart'].forEach(ev=>track.addEventListener(ev,stop,{passive:true}))}
 requestAnimationFrame(()=>{go(2);active()});
+// language switch (EN / FR)
+const FR={"Skip to content": "Aller au contenu", "About": "À propos", "Work": "Projets", "Skills": "Compétences", "Education": "Formation", "Contact": "Contact", "Strategy &": "Stratégie &", "Delivery": "Livraison", "Data &": "Données &", "AI": "IA", "Since 2021": "Depuis 2021", "Montréal · Bilingual FR / EN": "Montréal · Bilingue FR / EN", "Open to new opportunities": "Ouverte à de nouvelles opportunités", "About Me": "À propos", "I turn business needs into products and processes that ship, working where strategy, data, technology and people meet.": "Je transforme les besoins d'affaires en produits et en processus concrets, là où se rencontrent la stratégie, les données, la technologie et les gens.", "I've led a CRM launch serving millions of customers, simplified checkout and subscription flows, and built AI workflows teams use every day. I work in French and English.": "J'ai mené le lancement d'un CRM au service de millions de clients, simplifié des parcours de paiement et d'abonnement, et créé des flux de travail IA que des équipes utilisent chaque jour. Je travaille en français et en anglais.", "Years of experience": "Années d'expérience", "Tickets a month handled": "Billets traités par mois", "Recurring revenue lift": "Hausse des revenus récurrents", "Recent Work": "Projets récents", "Problems I've worked on, from idea to launch. A full case study for each is coming.": "Des problèmes que j'ai résolus, de l'idée au lancement. Une étude de cas complète suivra pour chacun.", "days to resolve": "jours pour résoudre", "tickets / month": "billets / mois", "within SLA": "dans les délais (SLA)", "Ticketing and CRM launch": "Lancement de billetterie et CRM", "Assign, track and escalate at scale": "Assigner, suivre et escalader à grande échelle", "15→4 days": "15→4 jours", "Checkout redesign": "Refonte du paiement", "Four steps cut to two after a 45% drop-off": "Quatre étapes réduites à deux après 45 % d'abandon", "−32% time": "−32 % de temps", "Trip Expenses ↗": "Trip Expenses ↗", "Travel app for splitting costs in any currency": "Appli de voyage pour partager les dépenses dans toutes les devises", "Live": "En ligne", "Turn these notes into a PRD and Jira tickets": "Transforme ces notes en PRD et en billets Jira", "Done: PRD, 12 stories and acceptance criteria.": "Fait : PRD, 12 récits et critères d'acceptation.", "AI workflows for teams": "Flux de travail IA pour les équipes", "Used by 10+ people for PRDs, tickets and admin": "Utilisés par plus de 10 personnes pour les PRD, les billets et l'admin", "1–2h/day": "1–2 h/jour", "Leadership dashboards": "Tableaux de bord de direction", "SLA, volume and performance in Power BI": "SLA, volume et performance dans Power BI", "My Skills": "Mes compétences", "Six areas I bring to a team. Open one to see a result and the tools I use.": "Six domaines que j'apporte à une équipe. Ouvrez-en un pour voir un résultat et les outils que j'utilise.", "Strategy and roadmaps": "Stratégie et feuilles de route", "Turning a business vision into an MVP and a phased roadmap, framed by a North Star metric and guardrails.": "Transformer une vision d'affaires en MVP et en feuille de route par étapes, encadrée par une métrique North Star et des garde-fous.", "trial-to-paid conversion": "conversion essai → payant", "Roadmaps": "Feuilles de route", "North Star metrics": "Métriques North Star", "Go-to-market": "Mise en marché", "User research": "Recherche utilisateur", "Agile delivery": "Livraison agile", "Writing epics and user stories, triaging by impact, and keeping a cross-functional team shipping every month.": "Rédiger des épopées et des récits utilisateurs, prioriser selon l'impact et garder une équipe multidisciplinaire en livraison chaque mois.", "people on the team I coordinated": "personnes dans l'équipe que j'ai coordonnée", "Process and service design": "Conception de processus et de services", "Finding the bottleneck in the data, redesigning the process, and keeping it compliant and easy for people to run.": "Trouver le goulot d'étranglement dans les données, repenser le processus, et le garder conforme et simple à appliquer.", "days to resolve larger tickets": "jours pour résoudre les billets complexes", "Governance": "Gouvernance", "Compliance": "Conformité", "Training": "Formation", "E-commerce and CRM": "Commerce électronique et CRM", "Simplifying checkout and subscription flows, and building lifecycle email journeys with segmentation and A/B tests.": "Simplifier les parcours de paiement et d'abonnement, et créer des parcours courriel par cycle de vie avec segmentation et tests A/B.", "checkout time": "temps de paiement", "Subscriptions": "Abonnements", "A/B testing": "Tests A/B", "Retention": "Rétention", "AI enablement": "Adoption de l'IA", "Building AI workflows and prototypes teams actually adopt, from first proof of concept to everyday use.": "Créer des flux de travail et des prototypes IA que les équipes adoptent vraiment, de la première preuve de concept à l'usage quotidien.", "weeks of discovery with AI prototypes": "semaines de découverte avec des prototypes IA", "Prototyping": "Prototypage", "Automation": "Automatisation", "Change management": "Gestion du changement", "Data and analytics": "Données et analytique", "Cleaning messy multi-source data and turning it into dashboards and metrics leaders use to decide.": "Nettoyer des données désordonnées de sources multiples et en faire des tableaux de bord et des métriques qui aident la direction à décider.", "retention metrics defined and tracked": "métriques de rétention définies et suivies", "BSc Business Administration": "BAA en administration des affaires", "Project Management and Accounting · HEC Montréal": "Gestion de projet et comptabilité · HEC Montréal", "Certification": "Certification", "View →": "Voir →", "Certification · 2025": "Certification · 2025", "Computer Science and Programming in Python": "Informatique et programmation en Python", "Course · 2025": "Cours · 2025", "I'm excited to hear from you!": "Au plaisir d'avoir de vos nouvelles!", "Explore": "Explorer", "About me": "À propos de moi", "Recent work": "Projets récents", "Connect": "Me joindre", "Email": "Courriel", "Phone": "Téléphone", "© 2026 Thien Nhu Cindy Huynh. All rights reserved.": "© 2026 Thien Nhu Cindy Huynh. Tous droits réservés.", "@Menu": "Menu", "@Close menu": "Fermer le menu", "@Open menu": "Ouvrir le menu", "@LinkedIn profile (QR code)": "Profil LinkedIn (code QR)", "@Recent work, scroll sideways": "Projets récents, défiler horizontalement", "@Previous work": "Projet précédent", "@Next work": "Projet suivant", "@Footer": "Pied de page", "@Back to top": "Retour en haut"};
+const EN_TEXT=new Map(),EN_ATTR=new Map();
+(function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest('script,style,svg,.lang')?2:1});let n;while(n=w.nextNode()){const t=n.nodeValue.replace(/\s+/g,' ').trim();if(FR[t]!==undefined)EN_TEXT.set(n,n.nodeValue)}
+$$('[aria-label]').forEach(e=>{const v=e.getAttribute('aria-label');if(FR['@'+v]!==undefined)EN_ATTR.set(e,v)})})();
+function setLang(l){lang=l;const fr=l==='fr';
+EN_TEXT.forEach((en,n)=>{const t=en.replace(/\s+/g,' ').trim();n.nodeValue=fr?en.replace(t,FR[t]):en});
+EN_ATTR.forEach((en,e)=>e.setAttribute('aria-label',fr?FR['@'+en]:en));
+document.documentElement.lang=l;
+$$('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
+$$('[data-count]').forEach(el=>{if(el.textContent.trim())el.textContent=fmt(+el.dataset.count,el)});
+try{localStorage.setItem('lang',l)}catch(e){}}
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+{let l=new URLSearchParams(location.search).get('lang');if(!l){try{l=localStorage.getItem('lang')}catch(e){}}if(!l&&/^fr/i.test(navigator.language||''))l='fr';if(l==='fr')setLang('fr')}
 // skills accordion
 $$('.svc-head').forEach(b=>b.addEventListener('click',()=>{const it=b.closest('.svc-item'),on=!it.classList.contains('open');it.classList.toggle('open',on);b.setAttribute('aria-expanded',on)}));
 </script>
