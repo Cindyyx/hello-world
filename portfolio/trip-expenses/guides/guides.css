@@ -19,7 +19,7 @@ h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0}
 .top .in{max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font:700 18px var(--display)}
 .brand svg{width:30px;height:30px}
-.brand .tag{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pink-ink);background:var(--pink);border-radius:999px;padding:3px 9px}
+.brand-wrap .tag{text-decoration:none;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pink-ink);background:var(--pink);border-radius:999px;padding:3px 9px}
 .top nav{margin-left:auto;display:flex;gap:6px;align-items:center}
 .top nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;padding:7px 12px;border-radius:999px}
 .top nav a:hover{background:var(--soft);color:var(--ink)}
@@ -71,8 +71,14 @@ tr:last-child td{border-bottom:0}
 .cards a{display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;transition:border-color .2s,transform .2s}
 .cards a:hover{border-color:var(--pink-ink);transform:translateY(-2px)}
 .cards b{font:700 18px var(--display)}
-.cards span{color:var(--muted);font-size:15px;line-height:1.45}
+.cards a>span{color:var(--muted);font-size:15px;line-height:1.45}
 .note{font-size:14.5px;color:var(--muted);border-top:1px solid var(--line);margin-top:56px;padding-top:18px}
+html[lang="fr"] .l-en,html:not([lang="fr"]) .l-fr{display:none!important}
+.brand-wrap{display:flex;align-items:center;gap:9px}
+.lang{display:flex;background:var(--soft);border-radius:999px;padding:3px;margin-right:4px}
+.lang button{border:0;background:transparent;color:var(--muted);font:600 12.5px var(--body);min-width:34px;height:28px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.lang button:focus-visible{outline:3px solid var(--pink-ink);outline-offset:2px}
 @media (max-width:1100px){.layout{grid-template-columns:210px minmax(0,1fr)}.toc{display:none}}
 @media (max-width:760px){
   .layout{grid-template-columns:minmax(0,1fr);gap:0;padding:0 16px}
@@ -84,7 +90,9 @@ tr:last-child td{border-bottom:0}
   .mnav a[aria-current="page"]{color:var(--pink-ink);font-weight:600}
   .top .in{padding:10px 16px;gap:8px}
   .top nav a{padding:6px 9px;font-size:14px}
-  .brand .tag{display:none}
+  .brand-wrap .tag{display:none}
+  .top nav a.about{display:none}
+  .top nav a{white-space:nowrap}
   main{padding-top:20px}
 }
 @media (max-width:340px){.top nav a.about{display:none}}

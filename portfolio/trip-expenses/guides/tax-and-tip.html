@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Tax and tip · TallyUp Guides" data-title-fr="Taxe et pourboire · Guides TallyUp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="How TallyUp knows the tax, what a % tip is a percent of, and why it always trusts the bill.">
 <title>Tax and tip · TallyUp Guides</title>
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(!l&&/^fr/i.test(navigator.language||''))l='fr';if(l==='fr')document.documentElement.lang='fr'})();</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2212%22%20fill%3D%22%23FFD9EC%22/%3E%3Cg%20transform%3D%22translate%285.28%205.28%29%20scale%28.56%29%22%20fill%3D%22none%22%20stroke%3D%22%23191420%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Cpath%20d%3D%22M8%2014.5c1.2%201.3%202.6%201.9%204%201.9s2.8-.6%204-1.9%22/%3E%3Cpath%20d%3D%22M5.2%207.8c1-1.7%202.5-2.4%203.8-1.6%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -12,21 +13,26 @@
 </head>
 <body>
 <header class="top"><div class="in">
-  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span><span class="tag">Guides</span></a>
-  <nav aria-label="Site"><a class="about" href="../">About</a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener">Open the app</a></nav>
+  <div class="brand-wrap"><a class="brand" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span></a><a class="tag" href="index.html"><span class="l-en">Guides</span><span class="l-fr" lang="fr">Guides</span></a></div>
+  <nav aria-label="Site"><div class="lang" role="group" aria-label="Language / Langue"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button></div><a class="about" href="../"><span class="l-en">About</span><span class="l-fr" lang="fr">À propos</span></a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener"><span class="l-en">Open the app</span><span class="l-fr" lang="fr">Ouvrir l'appli</span></a></nav>
 </div></header>
 <div class="layout">
-  <aside class="side" aria-label="Guides"><a href="index.html">Overview</a><h4>Start here</h4><a href="get-started.html">Get started</a><a href="invites-and-roles.html">Invites and roles</a><h4>Expenses</h4><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html">Refunds</a><a href="faces.html">Faces and names</a><h4>Money rules</h4><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html">Split a bill by item</a><a href="tax-and-tip.html" aria-current="page">Tax and tip</a><h4>Settling</h4><a href="settle-up.html">Settle up and payments</a><h4>Your data</h4><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></aside>
-  <main id="main"><details class="mnav"><summary>All guides</summary><div><a href="index.html">Overview</a><p class="crumb" style="margin:10px 0 2px">Start here</p><a href="get-started.html">Get started</a><a href="invites-and-roles.html">Invites and roles</a><p class="crumb" style="margin:10px 0 2px">Expenses</p><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html">Refunds</a><a href="faces.html">Faces and names</a><p class="crumb" style="margin:10px 0 2px">Money rules</p><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html">Split a bill by item</a><a href="tax-and-tip.html" aria-current="page">Tax and tip</a><p class="crumb" style="margin:10px 0 2px">Settling</p><a href="settle-up.html">Settle up and payments</a><p class="crumb" style="margin:10px 0 2px">Your data</p><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></div></details>
-<p class="crumb">Money rules</p>
-<h1>Tax and tip</h1>
-<p class="lede">How TallyUp knows the tax, what a % tip is a percent of, and why it always trusts the bill.</p>
-<section id="printed"><h2><a href="tax-and-tip.html#printed">The bill always wins</a></h2>
+  <aside class="side" aria-label="Guides"><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><h4><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></h4><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><h4><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></h4><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><h4><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></h4><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html" aria-current="page"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><h4><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></h4><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><h4><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></h4><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></aside>
+  <main id="main"><details class="mnav"><summary><span class="l-en">All guides</span><span class="l-fr" lang="fr">Tous les guides</span></summary><div><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></p><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></p><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></p><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html" aria-current="page"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></p><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></p><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></div></details>
+<p class="crumb"><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></p>
+<h1><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></h1>
+<p class="lede"><span class="l-en">How TallyUp knows the tax, what a % tip is a percent of, and why it always trusts the bill.</span><span class="l-fr" lang="fr">Comment TallyUp connaît la taxe, sur quoi se calcule un pourboire en %, et pourquoi la facture a toujours le dernier mot.</span></p>
+<section id="printed"><h2><a href="tax-and-tip.html#printed"><span class="l-en">The bill always wins</span><span class="l-fr" lang="fr">La facture a toujours raison</span></a></h2><div class="l-en">
 <p>The tax actually charged always comes from the bill itself. When a receipt prints its tax, the scanner reads it and adds up the tax lines (TPS + TVQ, GST, HST, VAT). The amount before tax is then the total, minus the tax, minus any tip in the bill.</p>
 <p>The app only works an amount out when the bill doesn't print it.</p>
-</section><section id="place"><h2><a href="tax-and-tip.html#place">Where the bill was</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>La taxe réellement facturée vient toujours de la facture elle-même. Quand un reçu imprime sa taxe, le lecteur la lit et additionne les lignes de taxe (TPS + TVQ, GST, HST, TVA). Le montant avant taxes est alors le total, moins la taxe, moins tout pourboire inclus dans la facture.</p>
+<p>L'appli ne calcule un montant que si la facture ne l'imprime pas.</p>
+</div></section><section id="place"><h2><a href="tax-and-tip.html#place"><span class="l-en">Where the bill was</span><span class="l-fr" lang="fr">Où était la facture</span></a></h2><div class="l-en">
 <p>The province comes from the receipt's address or postal code first, then from the currency's country. Only "ON" or "Ontario" counts as Ontario, so a street like "Carry on Street" isn't read as Ontario. Postal codes starting X0A, X0B or X0C are read as Nunavut.</p>
-</section><section id="rates"><h2><a href="tax-and-tip.html#rates">Canadian rates on restaurant meals</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>La province vient d'abord de l'adresse ou du code postal du reçu, puis du pays de la devise. Seuls « ON » ou « Ontario » comptent pour l'Ontario, donc une rue comme « Carry on Street » n'est pas lue comme l'Ontario. Les codes postaux qui commencent par X0A, X0B ou X0C sont lus comme le Nunavut.</p>
+</div></section><section id="rates"><h2><a href="tax-and-tip.html#rates"><span class="l-en">Canadian rates on restaurant meals</span><span class="l-fr" lang="fr">Taux canadiens sur les repas au restaurant</span></a></h2><div class="l-en">
 <div class="tw"><table><thead><tr><th>Province or territory</th><th>Tax</th><th>Combined</th></tr></thead><tbody>
 <tr><td>Alberta</td><td>GST 5%</td><td>5%</td></tr>
 <tr><td>British Columbia</td><td>GST 5% + PST 7%</td><td>12%</td></tr>
@@ -44,22 +50,53 @@
 </tbody></table></div>
 <p><b>Rates by date.</b> A bill uses the rate in force on the day it was spent: Nova Scotia 15% before 2025-04-01, Prince Edward Island 14% before 2016-10-01, New Brunswick and Newfoundland and Labrador 13% before 2016-07-01. With no date, today's rate applies.</p>
 <p><b>Elsewhere.</b> In the United States, sales tax varies by state and city, so there's no single rate. In VAT countries, tax is already included in the prices.</p>
-</section><section id="rounding"><h2><a href="tax-and-tip.html#rounding">Each tax rounded on its own</a></h2>
+</div><div class="l-fr" lang="fr">
+<div class="tw"><table><thead><tr><th>Province ou territoire</th><th>Taxe</th><th>Combinée</th></tr></thead><tbody>
+<tr><td>Alberta</td><td>TPS 5 %</td><td>5 %</td></tr>
+<tr><td>Colombie-Britannique</td><td>TPS 5 % + TVP 7 %</td><td>12 %</td></tr>
+<tr><td>Manitoba</td><td>TPS 5 % + TVD 7 %</td><td>12 %</td></tr>
+<tr><td>Nouveau-Brunswick</td><td>TVH 15 %</td><td>15 %</td></tr>
+<tr><td>Terre-Neuve-et-Labrador</td><td>TVH 15 %</td><td>15 %</td></tr>
+<tr><td>Territoires du Nord-Ouest</td><td>TPS 5 %</td><td>5 %</td></tr>
+<tr><td>Nouvelle-Écosse</td><td>TVH 14 %</td><td>14 %</td></tr>
+<tr><td>Nunavut</td><td>TPS 5 %</td><td>5 %</td></tr>
+<tr><td>Ontario</td><td>TVH 13 %</td><td>13 %</td></tr>
+<tr><td>Île-du-Prince-Édouard</td><td>TVH 15 %</td><td>15 %</td></tr>
+<tr><td>Québec</td><td>TPS 5 % + TVQ 9,975 %</td><td>14,975 %</td></tr>
+<tr><td>Saskatchewan</td><td>TPS 5 % + TVP 6 %</td><td>11 %</td></tr>
+<tr><td>Yukon</td><td>TPS 5 %</td><td>5 %</td></tr>
+</tbody></table></div>
+<p><b>Taux selon la date.</b> Une facture utilise le taux en vigueur le jour de la dépense : Nouvelle-Écosse 15 % avant le 2025-04-01, Île-du-Prince-Édouard 14 % avant le 2016-10-01, Nouveau-Brunswick et Terre-Neuve-et-Labrador 13 % avant le 2016-07-01. Sans date, le taux d'aujourd'hui s'applique.</p>
+<p><b>Ailleurs.</b> Aux États-Unis, la taxe de vente varie selon l'État et la ville, donc il n'y a pas de taux unique. Dans les pays à TVA, la taxe est déjà incluse dans les prix.</p>
+</div></section><section id="rounding"><h2><a href="tax-and-tip.html#rounding"><span class="l-en">Each tax rounded on its own</span><span class="l-fr" lang="fr">Chaque taxe arrondie séparément</span></a></h2><div class="l-en">
 <p>Tills round each tax separately (GST and QST, or GST and PST), so TallyUp does too. That keeps the amount before tax exact to the cent.</p>
 <div class="example"><span class="k">Québec bill of $11.62</span>10.10 + 0.51 GST + 1.01 QST = 11.62</div>
 <p>Every expense with a known rate shows a line like "≈ $9.43 tax (QC) · $62.95 before tax".</p>
-</section><section id="tip"><h2><a href="tax-and-tip.html#tip">What a % tip is a percent of</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Les caisses arrondissent chaque taxe séparément (TPS et TVQ, ou TPS et TVP), et TallyUp fait de même. Le montant avant taxes reste ainsi exact au cent près.</p>
+<div class="example"><span class="k">Facture de 11,62 $ au Québec</span>10,10 + 0,51 TPS + 1,01 TVQ = 11,62</div>
+<p>Chaque dépense dont le taux est connu affiche une ligne comme « ≈ 9,43 $ de taxe (QC) · 62,95 $ avant taxes ».</p>
+</div></section><section id="tip"><h2><a href="tax-and-tip.html#tip"><span class="l-en">What a % tip is a percent of</span><span class="l-fr" lang="fr">Sur quoi se calcule un pourboire en %</span></a></h2><div class="l-en">
 <div class="tw"><table><thead><tr><th>Where</th><th>A % tip is worked out on</th></tr></thead><tbody>
 <tr><td>Canada and the US (tax added at the till)</td><td>The amount before tax</td></tr>
 <tr><td>VAT countries (tax in the prices)</td><td>The total</td></tr>
 </tbody></table></div>
 <div class="example"><span class="k">18% tip on a $48.50 bill before tax</span>48.50 × 18% = 8.73</div>
-</section>
-<nav class="pn" aria-label="More guides"><a href="split-by-item.html"><small>Previous</small>Split a bill by item</a><a class="nx" href="scan-receipts.html"><small>Next</small>Scan receipts</a></nav>
+</div><div class="l-fr" lang="fr">
+<div class="tw"><table><thead><tr><th>Où</th><th>Un pourboire en % se calcule sur</th></tr></thead><tbody>
+<tr><td>Canada et États-Unis (taxe ajoutée à la caisse)</td><td>Le montant avant taxes</td></tr>
+<tr><td>Pays à TVA (taxe dans les prix)</td><td>Le total</td></tr>
+</tbody></table></div>
+<div class="example"><span class="k">Pourboire de 18 % sur une facture de 48,50 $ avant taxes</span>48,50 × 18 % = 8,73</div>
+</div></section>
+<nav class="pn" aria-label="More guides"><a href="split-by-item.html"><small><span class="l-en">Previous</span><span class="l-fr" lang="fr">Précédent</span></small><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a class="nx" href="scan-receipts.html"><small><span class="l-en">Next</span><span class="l-fr" lang="fr">Suivant</span></small><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a></nav>
   </main>
-  <aside class="toc" aria-label="On this page"><h4>On this page</h4><a href="tax-and-tip.html#printed">The bill always wins</a><a href="tax-and-tip.html#place">Where the bill was</a><a href="tax-and-tip.html#rates">Canadian rates on restaurant meals</a><a href="tax-and-tip.html#rounding">Each tax rounded on its own</a><a href="tax-and-tip.html#tip">What a % tip is a percent of</a></aside>
+  <aside class="toc" aria-label="On this page"><h4><span class="l-en">On this page</span><span class="l-fr" lang="fr">Sur cette page</span></h4><a href="tax-and-tip.html#printed"><span class="l-en">The bill always wins</span><span class="l-fr" lang="fr">La facture a toujours raison</span></a><a href="tax-and-tip.html#place"><span class="l-en">Where the bill was</span><span class="l-fr" lang="fr">Où était la facture</span></a><a href="tax-and-tip.html#rates"><span class="l-en">Canadian rates on restaurant meals</span><span class="l-fr" lang="fr">Taux canadiens sur les repas au restaurant</span></a><a href="tax-and-tip.html#rounding"><span class="l-en">Each tax rounded on its own</span><span class="l-fr" lang="fr">Chaque taxe arrondie séparément</span></a><a href="tax-and-tip.html#tip"><span class="l-en">What a % tip is a percent of</span><span class="l-fr" lang="fr">Sur quoi se calcule un pourboire en %</span></a></aside>
 </div>
 <script>
+(function(){const R=document.documentElement;
+function set(l,save){R.lang=l;document.title=R.dataset[l==='fr'?'titleFr':'titleEn'];document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));if(save)try{localStorage.setItem('lang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>set(b.dataset.lang,true)));set(R.lang==='fr'?'fr':'en',false);})();
 // highlight the section in view in "On this page"
 (function(){const links=[...document.querySelectorAll('.toc a')];if(!links.length||!('IntersectionObserver' in window))return;
 const map=new Map(links.map(a=>[a.getAttribute('href').split('#')[1],a]));

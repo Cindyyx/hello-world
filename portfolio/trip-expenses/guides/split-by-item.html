@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Split a bill by item · TallyUp Guides" data-title-fr="Partager une facture par article · Guides TallyUp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="For one bill paid by one person, where people shared different dishes.">
 <title>Split a bill by item · TallyUp Guides</title>
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(!l&&/^fr/i.test(navigator.language||''))l='fr';if(l==='fr')document.documentElement.lang='fr'})();</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2212%22%20fill%3D%22%23FFD9EC%22/%3E%3Cg%20transform%3D%22translate%285.28%205.28%29%20scale%28.56%29%22%20fill%3D%22none%22%20stroke%3D%22%23191420%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Cpath%20d%3D%22M8%2014.5c1.2%201.3%202.6%201.9%204%201.9s2.8-.6%204-1.9%22/%3E%3Cpath%20d%3D%22M5.2%207.8c1-1.7%202.5-2.4%203.8-1.6%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -12,16 +13,16 @@
 </head>
 <body>
 <header class="top"><div class="in">
-  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span><span class="tag">Guides</span></a>
-  <nav aria-label="Site"><a class="about" href="../">About</a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener">Open the app</a></nav>
+  <div class="brand-wrap"><a class="brand" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span></a><a class="tag" href="index.html"><span class="l-en">Guides</span><span class="l-fr" lang="fr">Guides</span></a></div>
+  <nav aria-label="Site"><div class="lang" role="group" aria-label="Language / Langue"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button></div><a class="about" href="../"><span class="l-en">About</span><span class="l-fr" lang="fr">À propos</span></a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener"><span class="l-en">Open the app</span><span class="l-fr" lang="fr">Ouvrir l'appli</span></a></nav>
 </div></header>
 <div class="layout">
-  <aside class="side" aria-label="Guides"><a href="index.html">Overview</a><h4>Start here</h4><a href="get-started.html">Get started</a><a href="invites-and-roles.html">Invites and roles</a><h4>Expenses</h4><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html">Refunds</a><a href="faces.html">Faces and names</a><h4>Money rules</h4><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html" aria-current="page">Split a bill by item</a><a href="tax-and-tip.html">Tax and tip</a><h4>Settling</h4><a href="settle-up.html">Settle up and payments</a><h4>Your data</h4><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></aside>
-  <main id="main"><details class="mnav"><summary>All guides</summary><div><a href="index.html">Overview</a><p class="crumb" style="margin:10px 0 2px">Start here</p><a href="get-started.html">Get started</a><a href="invites-and-roles.html">Invites and roles</a><p class="crumb" style="margin:10px 0 2px">Expenses</p><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html">Refunds</a><a href="faces.html">Faces and names</a><p class="crumb" style="margin:10px 0 2px">Money rules</p><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html" aria-current="page">Split a bill by item</a><a href="tax-and-tip.html">Tax and tip</a><p class="crumb" style="margin:10px 0 2px">Settling</p><a href="settle-up.html">Settle up and payments</a><p class="crumb" style="margin:10px 0 2px">Your data</p><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></div></details>
-<p class="crumb">Money rules</p>
-<h1>Split a bill by item</h1>
-<p class="lede">For one bill paid by one person, where people shared different dishes.</p>
-<section id="how"><h2><a href="split-by-item.html#how">How to split by item</a></h2>
+  <aside class="side" aria-label="Guides"><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><h4><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></h4><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><h4><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></h4><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><h4><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></h4><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html" aria-current="page"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><h4><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></h4><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><h4><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></h4><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></aside>
+  <main id="main"><details class="mnav"><summary><span class="l-en">All guides</span><span class="l-fr" lang="fr">Tous les guides</span></summary><div><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></p><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></p><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></p><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html" aria-current="page"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></p><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></p><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></div></details>
+<p class="crumb"><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></p>
+<h1><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></h1>
+<p class="lede"><span class="l-en">For one bill paid by one person, where people shared different dishes.</span><span class="l-fr" lang="fr">Pour une facture payée par une personne, où chacun a pris des plats différents.</span></p>
+<section id="how"><h2><a href="split-by-item.html#how"><span class="l-en">How to split by item</span><span class="l-fr" lang="fr">Comment partager par article</span></a></h2><div class="l-en">
 <ol class="steps">
 <li>In the expense, pick <b>By item</b> (beside Equal, Amount and Percent).</li>
 <li>Each item is a row: an optional name, the amount, and the faces of whoever had it. Tap a face to add or remove that person, or tap <b>All</b>.</li>
@@ -29,15 +30,31 @@
 <li>A summary shows each person's part and who paid.</li>
 </ol>
 <p>Scanning the receipt fills the item rows for you, so you only tap faces. If you scan while on another split, a hint offers to switch to By item.</p>
-</section><section id="shared"><h2><a href="split-by-item.html#shared">Shared dishes, tax and tip</a></h2>
+</div><div class="l-fr" lang="fr">
+<ol class="steps">
+<li>Dans la dépense, choisissez <b>Par article</b> (à côté d'Égal, Montant et Pourcentage).</li>
+<li>Chaque article est une ligne : un nom (facultatif), le montant et les pastilles de ceux qui l'ont pris. Touchez une pastille pour ajouter ou retirer cette personne, ou touchez <b>Tous</b>.</li>
+<li>Touchez <b>+ Article</b> pour ajouter une ligne. Quand vous passez à Par article sans articles, le premier est rempli avec la description et le montant avant taxes.</li>
+<li>Un résumé montre la part de chacun et qui a payé.</li>
+</ol>
+<p>Numériser le reçu remplit les lignes pour vous : il ne reste qu'à toucher les pastilles. Si vous numérisez avec un autre partage, une suggestion propose de passer à Par article.</p>
+</div></section><section id="shared"><h2><a href="split-by-item.html#shared"><span class="l-en">Shared dishes, tax and tip</span><span class="l-fr" lang="fr">Plats partagés, taxe et pourboire</span></a></h2><div class="l-en">
 <p>A dish shared by several people is split between them. Tax, service and the tip are then shared <b>in proportion to what each person had</b>.</p>
 <div class="example"><span class="k">How each part is worked out</span>part = bill total × (that person's items) ÷ (all items)</div>
 <p>The parts are rounded once for the whole bill, so they always add up to the bill to the cent. The extra cent takes turns, like every split (see <a href="splitting.html#extra-cent">Splitting and cents</a>).</p>
 <div class="example"><span class="k">Example: a $96.00 bill</span>51.69 + 29.54 + 14.77 = 96.00</div>
-</section><section id="lines"><h2><a href="split-by-item.html#lines">The Tax, Tip and Total lines</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Un plat partagé entre plusieurs personnes est divisé entre elles. La taxe, le service et le pourboire sont ensuite répartis <b>selon ce que chacun a pris</b>.</p>
+<div class="example"><span class="k">Comment chaque part est calculée</span>part = total de la facture × (articles de la personne) ÷ (tous les articles)</div>
+<p>Les parts sont arrondies une seule fois pour toute la facture, donc elles donnent toujours la facture au cent près. Le cent de trop passe à tour de rôle, comme pour tous les partages (voir <a href="splitting.html#extra-cent">Partages et cents</a>).</p>
+<div class="example"><span class="k">Exemple : une facture de 96,00 $</span>51,69 + 29,54 + 14,77 = 96,00</div>
+</div></section><section id="lines"><h2><a href="split-by-item.html#lines"><span class="l-en">The Tax, Tip and Total lines</span><span class="l-fr" lang="fr">Les lignes Taxe, Pourboire et Total</span></a></h2><div class="l-en">
 <p>Right under the items, a box shows <b>Tax</b>, <b>Tip</b> and <b>Total</b>. You can edit each line by hand. When everything is shared out, it shows <b>All split ✓</b>; until then a line says how much of the bill isn't on an item yet.</p>
 <p>Tax comes from the bill: what was charged, not what the app thinks it should be. See <a href="tax-and-tip.html">Tax and tip</a>.</p>
-</section><section id="tip"><h2><a href="split-by-item.html#tip">Adding a tip</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Juste sous les articles, une boîte affiche <b>Taxe</b>, <b>Pourboire</b> et <b>Total</b>. Chaque ligne se modifie à la main. Quand tout est réparti, elle affiche <b>Tout est partagé ✓</b>; sinon, une ligne indique la partie de la facture qui n'est pas encore sur un article.</p>
+<p>La taxe vient de la facture : ce qui a été facturé, pas ce que l'appli pense qu'elle devrait être. Voir <a href="tax-and-tip.html">Taxe et pourboire</a>.</p>
+</div></section><section id="tip"><h2><a href="split-by-item.html#tip"><span class="l-en">Adding a tip</span><span class="l-fr" lang="fr">Ajouter un pourboire</span></a></h2><div class="l-en">
 <p>Tap <b>+ Tip</b> for a tip that wasn't on the itemized bill. The tip can be:</p>
 <div class="tw"><table><thead><tr><th>Option</th><th>What you type</th></tr></thead><tbody>
 <tr><td><b>Tip is in the bill</b> (checkbox)</td><td>The amount already includes the tip. Type how much it was.</td></tr>
@@ -46,18 +63,36 @@
 <tr><td><b>Card total</b></td><td>What your card was charged. The tip is that minus the bill.</td></tr>
 </tbody></table></div>
 <p>The tip is optional. Unticking "Tip is in the bill" by mistake and ticking it again brings back the tip you typed.</p>
-</section><section id="check"><h2><a href="split-by-item.html#check">Misread price check</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Touchez <b>+ Pourboire</b> pour un pourboire qui n'était pas sur la facture détaillée. Le pourboire peut être :</p>
+<div class="tw"><table><thead><tr><th>Option</th><th>Ce que vous tapez</th></tr></thead><tbody>
+<tr><td><b>Le pourboire est dans la facture</b> (case à cocher)</td><td>Le montant inclut déjà le pourboire. Tapez combien c'était.</td></tr>
+<tr><td>Un montant</td><td>Le pourboire en argent, ajouté en plus.</td></tr>
+<tr><td><b>%</b></td><td>Un pourcentage de la facture, avant taxes là où la taxe s'ajoute à la caisse.</td></tr>
+<tr><td><b>Total de la carte</b></td><td>Ce qui a été débité de votre carte. Le pourboire est ce montant moins la facture.</td></tr>
+</tbody></table></div>
+<p>Le pourboire est facultatif. Si vous décochez « Le pourboire est dans la facture » par erreur et la recochez, le pourboire tapé revient.</p>
+</div></section><section id="check"><h2><a href="split-by-item.html#check"><span class="l-en">Misread price check</span><span class="l-fr" lang="fr">Vérification des prix mal lus</span></a></h2><div class="l-en">
 <p>When the items are a few cents off the subtotal, usually because one price was misread, a warning tells you:</p>
 <div class="example"><span class="k">Warning</span>Items are $0.27 under the subtotal ($62.95). Check a price.</div>
 <p>It says nothing while the list is still being typed (when the gap is over 10%).</p>
-</section><section id="saved"><h2><a href="split-by-item.html#saved">How it's saved</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Quand les articles sont à quelques cents du sous-total, souvent parce qu'un prix a été mal lu, un avertissement vous le dit :</p>
+<div class="example"><span class="k">Avertissement</span>Les articles sont 0,27 $ sous le sous-total (62,95 $). Vérifiez un prix.</div>
+<p>Il ne dit rien tant que la liste est encore en train d'être tapée (quand l'écart dépasse 10 %).</p>
+</div></section><section id="saved"><h2><a href="split-by-item.html#saved"><span class="l-en">How it's saved</span><span class="l-fr" lang="fr">Comment c'est enregistré</span></a></h2><div class="l-en">
 <p>A by-item expense is saved as an ordinary Amount split, with the item rows kept beside it so the form reopens in By item. If someone later changes it as an Amount split, it opens as that instead. Anything not on the receipt, like parking or a deposit, is its own expense.</p>
-</section>
-<nav class="pn" aria-label="More guides"><a href="splitting.html"><small>Previous</small>Splitting and cents</a><a class="nx" href="tax-and-tip.html"><small>Next</small>Tax and tip</a></nav>
+</div><div class="l-fr" lang="fr">
+<p>Une dépense par article est enregistrée comme un partage Par montant ordinaire, avec les lignes d'articles gardées à côté pour que le formulaire se rouvre en Par article. Si quelqu'un la modifie ensuite comme un partage Par montant, elle s'ouvre ainsi. Tout ce qui n'est pas sur le reçu, comme le stationnement ou un dépôt, est sa propre dépense.</p>
+</div></section>
+<nav class="pn" aria-label="More guides"><a href="splitting.html"><small><span class="l-en">Previous</span><span class="l-fr" lang="fr">Précédent</span></small><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a class="nx" href="tax-and-tip.html"><small><span class="l-en">Next</span><span class="l-fr" lang="fr">Suivant</span></small><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a></nav>
   </main>
-  <aside class="toc" aria-label="On this page"><h4>On this page</h4><a href="split-by-item.html#how">How to split by item</a><a href="split-by-item.html#shared">Shared dishes, tax and tip</a><a href="split-by-item.html#lines">The Tax, Tip and Total lines</a><a href="split-by-item.html#tip">Adding a tip</a><a href="split-by-item.html#check">Misread price check</a><a href="split-by-item.html#saved">How it's saved</a></aside>
+  <aside class="toc" aria-label="On this page"><h4><span class="l-en">On this page</span><span class="l-fr" lang="fr">Sur cette page</span></h4><a href="split-by-item.html#how"><span class="l-en">How to split by item</span><span class="l-fr" lang="fr">Comment partager par article</span></a><a href="split-by-item.html#shared"><span class="l-en">Shared dishes, tax and tip</span><span class="l-fr" lang="fr">Plats partagés, taxe et pourboire</span></a><a href="split-by-item.html#lines"><span class="l-en">The Tax, Tip and Total lines</span><span class="l-fr" lang="fr">Les lignes Taxe, Pourboire et Total</span></a><a href="split-by-item.html#tip"><span class="l-en">Adding a tip</span><span class="l-fr" lang="fr">Ajouter un pourboire</span></a><a href="split-by-item.html#check"><span class="l-en">Misread price check</span><span class="l-fr" lang="fr">Vérification des prix mal lus</span></a><a href="split-by-item.html#saved"><span class="l-en">How it's saved</span><span class="l-fr" lang="fr">Comment c'est enregistré</span></a></aside>
 </div>
 <script>
+(function(){const R=document.documentElement;
+function set(l,save){R.lang=l;document.title=R.dataset[l==='fr'?'titleFr':'titleEn'];document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));if(save)try{localStorage.setItem('lang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>set(b.dataset.lang,true)));set(R.lang==='fr'?'fr':'en',false);})();
 // highlight the section in view in "On this page"
 (function(){const links=[...document.querySelectorAll('.toc a')];if(!links.length||!('IntersectionObserver' in window))return;
 const map=new Map(links.map(a=>[a.getAttribute('href').split('#')[1],a]));

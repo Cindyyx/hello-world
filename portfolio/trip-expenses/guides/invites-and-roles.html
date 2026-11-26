@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Invites and roles · TallyUp Guides" data-title-fr="Invitations et rôles · Guides TallyUp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Who can join a trip, and what each person is allowed to do in it.">
 <title>Invites and roles · TallyUp Guides</title>
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(!l&&/^fr/i.test(navigator.language||''))l='fr';if(l==='fr')document.documentElement.lang='fr'})();</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2212%22%20fill%3D%22%23FFD9EC%22/%3E%3Cg%20transform%3D%22translate%285.28%205.28%29%20scale%28.56%29%22%20fill%3D%22none%22%20stroke%3D%22%23191420%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Cpath%20d%3D%22M8%2014.5c1.2%201.3%202.6%201.9%204%201.9s2.8-.6%204-1.9%22/%3E%3Cpath%20d%3D%22M5.2%207.8c1-1.7%202.5-2.4%203.8-1.6%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -12,16 +13,16 @@
 </head>
 <body>
 <header class="top"><div class="in">
-  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span><span class="tag">Guides</span></a>
-  <nav aria-label="Site"><a class="about" href="../">About</a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener">Open the app</a></nav>
+  <div class="brand-wrap"><a class="brand" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span></a><a class="tag" href="index.html"><span class="l-en">Guides</span><span class="l-fr" lang="fr">Guides</span></a></div>
+  <nav aria-label="Site"><div class="lang" role="group" aria-label="Language / Langue"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button></div><a class="about" href="../"><span class="l-en">About</span><span class="l-fr" lang="fr">À propos</span></a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener"><span class="l-en">Open the app</span><span class="l-fr" lang="fr">Ouvrir l'appli</span></a></nav>
 </div></header>
 <div class="layout">
-  <aside class="side" aria-label="Guides"><a href="index.html">Overview</a><h4>Start here</h4><a href="get-started.html">Get started</a><a href="invites-and-roles.html" aria-current="page">Invites and roles</a><h4>Expenses</h4><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html">Refunds</a><a href="faces.html">Faces and names</a><h4>Money rules</h4><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html">Split a bill by item</a><a href="tax-and-tip.html">Tax and tip</a><h4>Settling</h4><a href="settle-up.html">Settle up and payments</a><h4>Your data</h4><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></aside>
-  <main id="main"><details class="mnav"><summary>All guides</summary><div><a href="index.html">Overview</a><p class="crumb" style="margin:10px 0 2px">Start here</p><a href="get-started.html">Get started</a><a href="invites-and-roles.html" aria-current="page">Invites and roles</a><p class="crumb" style="margin:10px 0 2px">Expenses</p><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html">Refunds</a><a href="faces.html">Faces and names</a><p class="crumb" style="margin:10px 0 2px">Money rules</p><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html">Split a bill by item</a><a href="tax-and-tip.html">Tax and tip</a><p class="crumb" style="margin:10px 0 2px">Settling</p><a href="settle-up.html">Settle up and payments</a><p class="crumb" style="margin:10px 0 2px">Your data</p><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></div></details>
-<p class="crumb">Start here</p>
-<h1>Invites and roles</h1>
-<p class="lede">Who can join a trip, and what each person is allowed to do in it.</p>
-<section id="links"><h2><a href="invites-and-roles.html#links">Personal invite links</a></h2>
+  <aside class="side" aria-label="Guides"><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><h4><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></h4><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html" aria-current="page"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><h4><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></h4><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><h4><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></h4><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><h4><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></h4><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><h4><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></h4><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></aside>
+  <main id="main"><details class="mnav"><summary><span class="l-en">All guides</span><span class="l-fr" lang="fr">Tous les guides</span></summary><div><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></p><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html" aria-current="page"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></p><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></p><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></p><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></p><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></div></details>
+<p class="crumb"><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></p>
+<h1><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></h1>
+<p class="lede"><span class="l-en">Who can join a trip, and what each person is allowed to do in it.</span><span class="l-fr" lang="fr">Qui peut rejoindre un voyage, et ce que chaque personne peut y faire.</span></p>
+<section id="links"><h2><a href="invites-and-roles.html#links"><span class="l-en">Personal invite links</span><span class="l-fr" lang="fr">Liens d'invitation personnels</span></a></h2><div class="l-en">
 <ul>
 <li>Each person in the trip has their own link.</li>
 <li>Opening it joins the trip to your account. After that the link belongs to that account only, and nobody else can use it.</li>
@@ -29,7 +30,15 @@
 <li>An Admin can reset a link to free it, for example if the wrong person opened it.</li>
 </ul>
 <div class="callout warn"><b>A link is a secret until it's used.</b> Anyone who opens a person's link before they do joins as that person. Send each link only to the person it's for.</div>
-</section><section id="expiry"><h2><a href="invites-and-roles.html#expiry">Links that expire</a></h2>
+</div><div class="l-fr" lang="fr">
+<ul>
+<li>Chaque personne du voyage a son propre lien.</li>
+<li>L'ouvrir ajoute le voyage à votre compte. Ensuite, le lien appartient à ce compte seulement, et personne d'autre ne peut l'utiliser.</li>
+<li>Une personne déjà dans le voyage ne peut pas prendre le lien de quelqu'un d'autre.</li>
+<li>Un Admin peut réinitialiser un lien pour le libérer, par exemple si la mauvaise personne l'a ouvert.</li>
+</ul>
+<div class="callout warn"><b>Un lien est un secret tant qu'il n'est pas utilisé.</b> Quiconque ouvre le lien d'une personne avant elle rejoint le voyage à sa place. N'envoyez chaque lien qu'à la personne à qui il est destiné.</div>
+</div></section><section id="expiry"><h2><a href="invites-and-roles.html#expiry"><span class="l-en">Links that expire</span><span class="l-fr" lang="fr">Des liens qui expirent</span></a></h2><div class="l-en">
 <p>An Admin can give a person's invite link an end date in Trip settings, under the link:</p>
 <div class="tw"><table><thead><tr><th>Setting</th><th>What it means</th></tr></thead><tbody>
 <tr><td>Any time</td><td>The default. The link never expires.</td></tr>
@@ -37,7 +46,15 @@
 <tr><td>For 7 days</td></tr><tr><td>For 30 days</td></tr>
 </tbody></table></div>
 <p>Whoever already joined with the link keeps using the trip on every device.</p>
-</section><section id="roles"><h2><a href="invites-and-roles.html#roles">Roles</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Un Admin peut donner une date de fin au lien d'une personne dans les paramètres du voyage, sous le lien :</p>
+<div class="tw"><table><thead><tr><th>Réglage</th><th>Ce que ça veut dire</th></tr></thead><tbody>
+<tr><td>En tout temps</td><td>Par défaut. Le lien n'expire jamais.</td></tr>
+<tr><td>Pendant 1 jour</td><td rowspan="3">Après la date de fin, personne de nouveau ne peut rejoindre le voyage avec ce lien.</td></tr>
+<tr><td>Pendant 7 jours</td></tr><tr><td>Pendant 30 jours</td></tr>
+</tbody></table></div>
+<p>Quiconque a déjà rejoint le voyage avec ce lien continue de l'utiliser sur tous ses appareils.</p>
+</div></section><section id="roles"><h2><a href="invites-and-roles.html#roles"><span class="l-en">Roles</span><span class="l-fr" lang="fr">Rôles</span></a></h2><div class="l-en">
 <p>Roles are enforced by the database, not just the app.</p>
 <div class="tw"><table><thead><tr><th>Role</th><th>Can do</th></tr></thead><tbody>
 <tr><td><b>Admin</b></td><td>Everything an Editor can, plus manage people, their access and their links.</td></tr>
@@ -45,19 +62,37 @@
 <tr><td><b>Viewer</b></td><td>See the trip.</td></tr>
 </tbody></table></div>
 <p>A payment is recorded by the person who got the money, or by an Admin. Viewers and Editors can ask for more access in Trip settings, and any Admin approves or declines it from a banner.</p>
-</section><section id="owner"><h2><a href="invites-and-roles.html#owner">The trip Owner</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Les rôles sont imposés par la base de données, pas seulement par l'appli.</p>
+<div class="tw"><table><thead><tr><th>Rôle</th><th>Peut</th></tr></thead><tbody>
+<tr><td><b>Admin</b></td><td>Tout ce qu'un Éditeur peut faire, plus gérer les personnes, leur accès et leurs liens.</td></tr>
+<tr><td><b>Éditeur</b></td><td>Ajouter et modifier des dépenses.</td></tr>
+<tr><td><b>Lecteur</b></td><td>Voir le voyage.</td></tr>
+</tbody></table></div>
+<p>Un paiement est enregistré par la personne qui a reçu l'argent, ou par un Admin. Les Lecteurs et les Éditeurs peuvent demander plus d'accès dans les paramètres du voyage, et n'importe quel Admin accepte ou refuse depuis une bannière.</p>
+</div></section><section id="owner"><h2><a href="invites-and-roles.html#owner"><span class="l-en">The trip Owner</span><span class="l-fr" lang="fr">La Propriétaire du voyage</span></a></h2><div class="l-en">
 <ul>
 <li>The Owner is whoever created the trip, and always stays an Admin.</li>
 <li>Only the Owner can delete or restore the trip. Deleted trips sit in Trash for 30 days.</li>
 <li>To leave, the Owner hands the trip to another Admin first.</li>
 <li>Other Admins can't demote or remove the Owner or reset their link. They can ask the Owner to hand the trip over to them.</li>
 </ul>
-</section>
-<nav class="pn" aria-label="More guides"><a href="get-started.html"><small>Previous</small>Get started</a><a class="nx" href="currencies.html"><small>Next</small>Currencies and exchange rates</a></nav>
+</div><div class="l-fr" lang="fr">
+<ul>
+<li>La Propriétaire est la personne qui a créé le voyage, et reste toujours Admin.</li>
+<li>Elle seule peut supprimer ou restaurer le voyage. Les voyages supprimés restent dans la Corbeille pendant 30 jours.</li>
+<li>Pour partir, elle cède d'abord le voyage à un autre Admin.</li>
+<li>Les autres Admins ne peuvent pas la rétrograder, la retirer ni réinitialiser son lien. Ils peuvent lui demander de leur céder le voyage.</li>
+</ul>
+</div></section>
+<nav class="pn" aria-label="More guides"><a href="get-started.html"><small><span class="l-en">Previous</span><span class="l-fr" lang="fr">Précédent</span></small><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a class="nx" href="currencies.html"><small><span class="l-en">Next</span><span class="l-fr" lang="fr">Suivant</span></small><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a></nav>
   </main>
-  <aside class="toc" aria-label="On this page"><h4>On this page</h4><a href="invites-and-roles.html#links">Personal invite links</a><a href="invites-and-roles.html#expiry">Links that expire</a><a href="invites-and-roles.html#roles">Roles</a><a href="invites-and-roles.html#owner">The trip Owner</a></aside>
+  <aside class="toc" aria-label="On this page"><h4><span class="l-en">On this page</span><span class="l-fr" lang="fr">Sur cette page</span></h4><a href="invites-and-roles.html#links"><span class="l-en">Personal invite links</span><span class="l-fr" lang="fr">Liens d'invitation personnels</span></a><a href="invites-and-roles.html#expiry"><span class="l-en">Links that expire</span><span class="l-fr" lang="fr">Des liens qui expirent</span></a><a href="invites-and-roles.html#roles"><span class="l-en">Roles</span><span class="l-fr" lang="fr">Rôles</span></a><a href="invites-and-roles.html#owner"><span class="l-en">The trip Owner</span><span class="l-fr" lang="fr">La Propriétaire du voyage</span></a></aside>
 </div>
 <script>
+(function(){const R=document.documentElement;
+function set(l,save){R.lang=l;document.title=R.dataset[l==='fr'?'titleFr':'titleEn'];document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));if(save)try{localStorage.setItem('lang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>set(b.dataset.lang,true)));set(R.lang==='fr'?'fr':'en',false);})();
 // highlight the section in view in "On this page"
 (function(){const links=[...document.querySelectorAll('.toc a')];if(!links.length||!('IntersectionObserver' in window))return;
 const map=new Map(links.map(a=>[a.getAttribute('href').split('#')[1],a]));

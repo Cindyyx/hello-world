@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Refunds · TallyUp Guides" data-title-fr="Remboursements · Guides TallyUp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Money that came back on an expense, like a deposit returned or an item sent back.">
 <title>Refunds · TallyUp Guides</title>
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(!l&&/^fr/i.test(navigator.language||''))l='fr';if(l==='fr')document.documentElement.lang='fr'})();</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2212%22%20fill%3D%22%23FFD9EC%22/%3E%3Cg%20transform%3D%22translate%285.28%205.28%29%20scale%28.56%29%22%20fill%3D%22none%22%20stroke%3D%22%23191420%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2210.3%22%20r%3D%221.05%22%20fill%3D%22%23191420%22%20stroke%3D%22none%22/%3E%3Cpath%20d%3D%22M8%2014.5c1.2%201.3%202.6%201.9%204%201.9s2.8-.6%204-1.9%22/%3E%3Cpath%20d%3D%22M5.2%207.8c1-1.7%202.5-2.4%203.8-1.6%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -12,25 +13,34 @@
 </head>
 <body>
 <header class="top"><div class="in">
-  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span><span class="tag">Guides</span></a>
-  <nav aria-label="Site"><a class="about" href="../">About</a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener">Open the app</a></nav>
+  <div class="brand-wrap"><a class="brand" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FFD9EC"/><g transform="translate(5.28 5.28) scale(.56)" fill="none" stroke="#191420" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="10.3" r="1.05" fill="#191420" stroke="none"/><circle cx="15" cy="10.3" r="1.05" fill="#191420" stroke="none"/><path d="M8 14.5c1.2 1.3 2.6 1.9 4 1.9s2.8-.6 4-1.9"/><path d="M5.2 7.8c1-1.7 2.5-2.4 3.8-1.6"/></g></svg><span>TallyUp</span></a><a class="tag" href="index.html"><span class="l-en">Guides</span><span class="l-fr" lang="fr">Guides</span></a></div>
+  <nav aria-label="Site"><div class="lang" role="group" aria-label="Language / Langue"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button></div><a class="about" href="../"><span class="l-en">About</span><span class="l-fr" lang="fr">À propos</span></a><a class="app" href="https://tallyup-app.vercel.app" target="_blank" rel="noopener"><span class="l-en">Open the app</span><span class="l-fr" lang="fr">Ouvrir l'appli</span></a></nav>
 </div></header>
 <div class="layout">
-  <aside class="side" aria-label="Guides"><a href="index.html">Overview</a><h4>Start here</h4><a href="get-started.html">Get started</a><a href="invites-and-roles.html">Invites and roles</a><h4>Expenses</h4><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html" aria-current="page">Refunds</a><a href="faces.html">Faces and names</a><h4>Money rules</h4><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html">Split a bill by item</a><a href="tax-and-tip.html">Tax and tip</a><h4>Settling</h4><a href="settle-up.html">Settle up and payments</a><h4>Your data</h4><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></aside>
-  <main id="main"><details class="mnav"><summary>All guides</summary><div><a href="index.html">Overview</a><p class="crumb" style="margin:10px 0 2px">Start here</p><a href="get-started.html">Get started</a><a href="invites-and-roles.html">Invites and roles</a><p class="crumb" style="margin:10px 0 2px">Expenses</p><a href="currencies.html">Currencies and exchange rates</a><a href="scan-receipts.html">Scan receipts</a><a href="refunds.html" aria-current="page">Refunds</a><a href="faces.html">Faces and names</a><p class="crumb" style="margin:10px 0 2px">Money rules</p><a href="splitting.html">Splitting and cents</a><a href="split-by-item.html">Split a bill by item</a><a href="tax-and-tip.html">Tax and tip</a><p class="crumb" style="margin:10px 0 2px">Settling</p><a href="settle-up.html">Settle up and payments</a><p class="crumb" style="margin:10px 0 2px">Your data</p><a href="offline-and-sync.html">Offline and sync</a><a href="export.html">Export and Google Sheets</a><a href="search-and-filters.html">Search and filters</a><a href="how-money-is-checked.html">How the money is checked</a></div></details>
-<p class="crumb">Expenses</p>
-<h1>Refunds</h1>
-<p class="lede">Money that came back on an expense, like a deposit returned or an item sent back.</p>
-<section id="add"><h2><a href="refunds.html#add">Add a refund</a></h2>
+  <aside class="side" aria-label="Guides"><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><h4><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></h4><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><h4><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></h4><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html" aria-current="page"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><h4><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></h4><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><h4><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></h4><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><h4><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></h4><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></aside>
+  <main id="main"><details class="mnav"><summary><span class="l-en">All guides</span><span class="l-fr" lang="fr">Tous les guides</span></summary><div><a href="index.html"><span class="l-en">Overview</span><span class="l-fr" lang="fr">Vue d'ensemble</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Start here</span><span class="l-fr" lang="fr">Pour commencer</span></p><a href="get-started.html"><span class="l-en">Get started</span><span class="l-fr" lang="fr">Pour commencer</span></a><a href="invites-and-roles.html"><span class="l-en">Invites and roles</span><span class="l-fr" lang="fr">Invitations et rôles</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></p><a href="currencies.html"><span class="l-en">Currencies and exchange rates</span><span class="l-fr" lang="fr">Devises et taux de change</span></a><a href="scan-receipts.html"><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a href="refunds.html" aria-current="page"><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></a><a href="faces.html"><span class="l-en">Faces and names</span><span class="l-fr" lang="fr">Pastilles et noms</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Money rules</span><span class="l-fr" lang="fr">Règles d'argent</span></p><a href="splitting.html"><span class="l-en">Splitting and cents</span><span class="l-fr" lang="fr">Partages et cents</span></a><a href="split-by-item.html"><span class="l-en">Split a bill by item</span><span class="l-fr" lang="fr">Partager une facture par article</span></a><a href="tax-and-tip.html"><span class="l-en">Tax and tip</span><span class="l-fr" lang="fr">Taxe et pourboire</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Settling</span><span class="l-fr" lang="fr">Règlement</span></p><a href="settle-up.html"><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a><p class="crumb" style="margin:10px 0 2px"><span class="l-en">Your data</span><span class="l-fr" lang="fr">Vos données</span></p><a href="offline-and-sync.html"><span class="l-en">Offline and sync</span><span class="l-fr" lang="fr">Hors ligne et synchronisation</span></a><a href="export.html"><span class="l-en">Export and Google Sheets</span><span class="l-fr" lang="fr">Exportation et Google Sheets</span></a><a href="search-and-filters.html"><span class="l-en">Search and filters</span><span class="l-fr" lang="fr">Recherche et filtres</span></a><a href="how-money-is-checked.html"><span class="l-en">How the money is checked</span><span class="l-fr" lang="fr">Comment l'argent est vérifié</span></a></div></details>
+<p class="crumb"><span class="l-en">Expenses</span><span class="l-fr" lang="fr">Dépenses</span></p>
+<h1><span class="l-en">Refunds</span><span class="l-fr" lang="fr">Remboursements</span></h1>
+<p class="lede"><span class="l-en">Money that came back on an expense, like a deposit returned or an item sent back.</span><span class="l-fr" lang="fr">L'argent qui revient sur une dépense, comme un dépôt rendu ou un article retourné.</span></p>
+<section id="add"><h2><a href="refunds.html#add"><span class="l-en">Add a refund</span><span class="l-fr" lang="fr">Ajouter un remboursement</span></a></h2><div class="l-en">
 <ol class="steps">
 <li>Open the expense and tap <b>Edit</b>.</li>
 <li>In the <b>Refunds</b> box, tap "Got money back? Add a refund".</li>
 <li>Enter the amount (all or part), the date, who it's for (everyone in the split by default) and an optional note.</li>
 </ol>
-</section><section id="math"><h2><a href="refunds.html#math">What changes</a></h2>
+</div><div class="l-fr" lang="fr">
+<ol class="steps">
+<li>Ouvrez la dépense et touchez <b>Modifier</b>.</li>
+<li>Dans la boîte <b>Remboursements</b>, touchez « De l'argent remboursé? Ajouter un remboursement ».</li>
+<li>Entrez le montant (total ou partiel), la date, pour qui il est (tout le monde dans le partage par défaut) et une note facultative.</li>
+</ol>
+</div></section><section id="math"><h2><a href="refunds.html#math"><span class="l-en">What changes</span><span class="l-fr" lang="fr">Ce qui change</span></a></h2><div class="l-en">
 <p>Like a refund in a payments system, the money goes back to whoever paid, and the refund is its own entry next to the expense. The shares of the people it's for go down in proportion to their shares, in whole cents that add up exactly. So those people owe the payer less in Settle up.</p>
 <div class="example"><span class="k">In the list</span>↩ $90.00 CAD refunded to Cindy</div>
-</section><section id="rules"><h2><a href="refunds.html#rules">Rules</a></h2>
+</div><div class="l-fr" lang="fr">
+<p>Comme un remboursement dans un système de paiement, l'argent retourne à la personne qui a payé, et le remboursement est sa propre entrée à côté de la dépense. Les parts des personnes concernées baissent en proportion de leurs parts, en cents entiers qui tombent juste. Ces personnes doivent donc moins au payeur dans le règlement.</p>
+<div class="example"><span class="k">Dans la liste</span>↩ 90,00 $ CAD remboursés à Cindy</div>
+</div></section><section id="rules"><h2><a href="refunds.html#rules"><span class="l-en">Rules</span><span class="l-fr" lang="fr">Règles</span></a></h2><div class="l-en">
 <ul>
 <li>Refunds can't add up to more than the expense.</li>
 <li>The expense's amount can't be edited below what came back.</li>
@@ -38,12 +48,23 @@
 <li>Exports show the expense at what it came to, and the shares still add up.</li>
 <li>A refund can be removed. It's kept, marked removed, and shows in the history.</li>
 </ul>
-</section>
-<nav class="pn" aria-label="More guides"><a href="scan-receipts.html"><small>Previous</small>Scan receipts</a><a class="nx" href="settle-up.html"><small>Next</small>Settle up and payments</a></nav>
+</div><div class="l-fr" lang="fr">
+<ul>
+<li>Les remboursements ne peuvent pas dépasser la dépense.</li>
+<li>Le montant de la dépense ne peut pas être modifié sous ce qui a été remboursé.</li>
+<li>Le montant et les parts enregistrés restent tels quels; le remboursement est soustrait à la lecture du voyage.</li>
+<li>Les exportations montrent la dépense à ce qu'elle a coûté au final, et les parts tombent toujours juste.</li>
+<li>Un remboursement peut être retiré. Il est gardé, marqué comme retiré, et apparaît dans l'historique.</li>
+</ul>
+</div></section>
+<nav class="pn" aria-label="More guides"><a href="scan-receipts.html"><small><span class="l-en">Previous</span><span class="l-fr" lang="fr">Précédent</span></small><span class="l-en">Scan receipts</span><span class="l-fr" lang="fr">Numériser les reçus</span></a><a class="nx" href="settle-up.html"><small><span class="l-en">Next</span><span class="l-fr" lang="fr">Suivant</span></small><span class="l-en">Settle up and payments</span><span class="l-fr" lang="fr">Règlement et paiements</span></a></nav>
   </main>
-  <aside class="toc" aria-label="On this page"><h4>On this page</h4><a href="refunds.html#add">Add a refund</a><a href="refunds.html#math">What changes</a><a href="refunds.html#rules">Rules</a></aside>
+  <aside class="toc" aria-label="On this page"><h4><span class="l-en">On this page</span><span class="l-fr" lang="fr">Sur cette page</span></h4><a href="refunds.html#add"><span class="l-en">Add a refund</span><span class="l-fr" lang="fr">Ajouter un remboursement</span></a><a href="refunds.html#math"><span class="l-en">What changes</span><span class="l-fr" lang="fr">Ce qui change</span></a><a href="refunds.html#rules"><span class="l-en">Rules</span><span class="l-fr" lang="fr">Règles</span></a></aside>
 </div>
 <script>
+(function(){const R=document.documentElement;
+function set(l,save){R.lang=l;document.title=R.dataset[l==='fr'?'titleFr':'titleEn'];document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));if(save)try{localStorage.setItem('lang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>set(b.dataset.lang,true)));set(R.lang==='fr'?'fr':'en',false);})();
 // highlight the section in view in "On this page"
 (function(){const links=[...document.querySelectorAll('.toc a')];if(!links.length||!('IntersectionObserver' in window))return;
 const map=new Map(links.map(a=>[a.getAttribute('href').split('#')[1],a]));
